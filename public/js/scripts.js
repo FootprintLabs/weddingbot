@@ -512,6 +512,9 @@ $.fn.transition = Transition;
 module.exports = function () {
   var $elem = $('#wb-bot-builder');
 
+  uploadImage();
+  bindEvents();
+
   function show() {
     $('body').css('overflow', 'hidden');
     $elem.transition({
@@ -521,8 +524,6 @@ module.exports = function () {
         $elem.children('.body').transition('fade up');
       }
     });
-
-    uploadImage();
   }
 
   function resize() {
@@ -535,7 +536,13 @@ module.exports = function () {
   }
 
   function hide() {
+    $('body').css('overflow', 'auto');
+    $elem.children('.body').transition('fade down');
     $elem.transition('fade down');
+  }
+
+  function bindEvents() {
+    $elem.find('.save-form, .cancel-form').click(hide);
   }
 
   function uploadImage() {

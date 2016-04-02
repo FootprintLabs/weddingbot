@@ -202,13 +202,33 @@ block content
                       i.ui.retro.camera.icon
                       | Add a photo of just them
                     input(name="photo", type="file")
+                div.fields
+                  div.ten.wide.field
+                    label Your First Name after Marriage
+                    input(type="text", placeholder="Your Answer")
+                div.fields
+                  div.ten.wide.field
+                    label Your Last Name after Marriage
+                    input(type="text", placeholder="Your Answer")
+                div.fields
+                  div.ten.wide.field
+                    label Their First Name after Marriage
+                    input(type="text", placeholder="Your Answer")
+                div.fields
+                  div.ten.wide.field
+                    label Their Last Name after Marriage
+                    input(type="text", placeholder="Your Answer")
+                div.fields
+                  div.ten.wide.field
+                    label Location of your proposal
+                    input(type="text", placeholder="Your Answer")
+                div.fields(style="height:60px;")
 
       div.footer
         div.ui.container
           div.ui.basic.right.aligned.segment
-            button.ui.labeled.icon.button
-              i.pause.icon
-              | Pause
-            button.ui.right.labeled.icon.button
-              i.arrow.icon
-              | Next
+            button.ui.green.labeled.icon.button.save-form
+              i.save.icon
+              | Save
+            button.ui.button.cancel-form
+              | Cancel
