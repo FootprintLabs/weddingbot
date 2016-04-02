@@ -1,0 +1,183 @@
+/*******************************
+            Theme
+*******************************/
+
+@type    : 'global';
+@element : 'site';
+
+@import (multiple) '../semantic/theme.config';
+
+body, html {
+  background: linear-gradient(#255188, #4E96C3) fixed;
+}
+
+#wb-login {
+  height: 100%;
+
+  .column {
+    max-width: 450px;
+  }
+}
+
+#wb-header {
+  .logo {
+    font-size: 1.6em;
+
+    img {
+      width: 1.3em;
+    }
+  }
+}
+
+#wb-template-bar {
+  display: flex;
+  justify-content: space-between;
+
+  & > div {
+    width: 16.6666667%;
+  }
+
+  .template {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    height: 180px;
+    margin-right: 1em;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    background: #fff;
+  }
+
+  & > div:last-child .template {
+    margin-right: 0;
+  }
+
+  .template .icon {
+    width: 150px;
+    height: 150px;
+    background: url(/images/sprite-blue.png);
+    background-size: 600px;
+    margin: 0 auto;
+    transition: all .2s ease-in-out;
+  }
+
+  .template .text {
+    color: @blue;
+    text-align: center;
+    font-size: 1.1em;
+  }
+
+  .template:hover {
+    box-shadow: 0 0 10px #0E305A;
+  }
+
+  .template:hover .icon {
+    transform: scale(1.1);
+  }
+
+  .template.about-you .icon {
+    background-position: -452px -440px;
+  }
+
+  .template.save-the-date .icon {
+    background-position: -300px -292px;
+  }
+
+  .template.wedding-invite .icon {
+    background-position: -450px -3px;
+  }
+
+  .template.venue-directions .icon {
+    background-position: -150px 0;
+  }
+
+  .template.wedding-program .icon {
+    background-position: -300px -445px;
+  }
+
+  .template.reception-info .icon {
+    background-position: -450px -300px;
+  }
+
+  .template.thank-you .icon {
+    background-position: 0 -442px;
+  }
+}
+
+#wb-user-bots {
+
+  .ui.segment {
+    border: none;
+    box-shadow: none;
+  }
+
+  .stats {
+    position: relative;
+    min-height: 300px;
+  }
+
+  .ui.ribbon.label {
+    padding-left: 1em;
+  }
+
+  .ui.statistics {
+    justify-content: space-around;
+
+    & > .statistic {
+      margin-bottom: 0;
+    }
+
+    & > .statistic > .value {
+      font-size: 2.5em;
+    }
+  }
+
+  .ui.feed > .event > .content .summary {
+    font-size: 1.2em;
+    line-height: 1.5em;
+  }
+
+  .ui.feed>.event>.label+.content {
+    margin-left: 0.2em;
+  }
+
+}
+
+.wb-bot-header.ui.horizontal.list {
+  .item > .image {
+    width: 40px;
+    height: 40px;
+    background: url(/images/sprite-blue.png);
+    background-size: 164px;
+
+    &.about-you {
+      background-position: -453px -450px;
+    }
+
+    &.save-the-date {
+      background-position: -83px -83px
+    }
+
+    &.wedding-invite {
+      background-position: -123px -3px;
+    }
+
+    &.venue-directions {
+      background-position: -43px 0;
+    }
+
+    &.wedding-program {
+      background-position: -83px -122px;
+    }
+  }
+
+  .item .description {
+    color: #767676;
+    opacity: .7;
+    font-size: 0.9em;
+  }
+}
+
+
+@import (multiple) 'chart.less';
+@import (multiple) 'botbuilder.less';
+

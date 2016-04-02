@@ -1,0 +1,214 @@
+extends layout
+
+block content
+  div#wb-dashboard.ui.container
+    div.ui.basic.segment
+      h1.ui.inverted.header Start a new SMS bot
+      div#wb-template-bar
+        div
+          div.template.about-you
+            div.icon
+            div.text Get Started: About You
+        div
+          div.template.wedding-invite
+            div.icon
+            div.text Wedding Invite Bot
+        div
+          div.template.venue-directions
+            div.icon
+            div.text Venue Directions Bot
+        div
+          div.template.wedding-program
+            div.icon
+            div.text Wedding Program Bot
+        div
+          div.template.reception-info
+            div.icon
+            div.text Reception Info Bot
+        div
+          div.template.thank-you
+            div.icon
+            div.text Thank You Bot
+
+    div#wb-user-bots.ui.basic.segment
+      h1.ui.inverted.header Recent Bots
+      div.ui.three.column.grid
+        div.column
+          div.ui.segment
+            div.ui.orange.ribbon.label
+              i.ui.edit.icon
+              | Draft
+            div.wb-bot-header.ui.horizontal.list
+              div.item
+                img.ui.avatar.image.save-the-date(src="/images/blank.png")
+                div.content
+                  div.header Save the Date
+                  div.description Last edited on March 20, 2016
+            div.ui.divider
+            div.stats.none
+              h4.ui.header.aligned.center Cumulative Responses
+              div
+                img(src="/images/blank-chart.png", style="width:100%;")
+              div.ui.mini.statistics
+                div.statistic.orange
+                  div.value --
+                  div.label People
+                div.statistic.green
+                  div.value --
+                  div.label Responses
+                div.statistic.olive
+                  div.value --
+                  div.label SMS Used
+              div.ui.inverted.dimmer
+                div.content
+                  div.center
+                    h3.ui.grey.icon.header
+                      i.line.chart.icon
+                      |  No Stats Available
+
+        div.column
+          div.ui.segment
+            div.ui.green.ribbon.label
+              i.ui.lightning.icon
+              | Published
+            div.wb-bot-header.ui.horizontal.list
+              div.item
+                img.ui.avatar.image.wedding-invite(src="/images/blank.png")
+                div.content
+                  div.header Wedding Invite
+                  div.description Published on March 11, 2016
+            div.ui.divider
+            div.stats
+              h4.ui.header.aligned.center Cumulative Responses
+              div.wb-chart
+              div.ui.mini.statistics
+                div.statistic.orange
+                  div.value 120
+                  div.label People
+                div.statistic.green
+                  div.value 52
+                  div.label Responses
+                div.statistic.olive
+                  div.value 72
+                  div.label SMS Used
+
+        div.column
+          div.ui.segment
+            div.ui.teal.ribbon.label
+              i.ui.clock.icon
+              | Scheduled
+            div.wb-bot-header.ui.horizontal.list
+              div.item
+                img.ui.avatar.image.venue-directions(src="/images/blank.png")
+                div.content
+                  div.header Venue Directions
+                  div.description Scheduled on April 1, 2016
+            div.ui.divider
+            div.stats.none
+              h4.ui.header.aligned.center Cumulative Responses
+              div
+                img(src="/images/blank-chart.png", style="width:100%;")
+              div.ui.mini.statistics
+                div.statistic.orange
+                  div.value --
+                  div.label People
+                div.statistic.green
+                  div.value --
+                  div.label Responses
+                div.statistic.olive
+                  div.value --
+                  div.label SMS Used
+              div.ui.inverted.dimmer
+                div.content
+                  div.center
+                    h3.ui.grey.icon.header
+                      i.line.chart.icon
+                      |  No Stats Available
+
+        div.column
+          div.ui.segment
+            div.ui.orange.ribbon.label
+              i.ui.edit.icon
+              | Draft
+            div.wb-bot-header.ui.horizontal.list
+              div.item
+                img.ui.avatar.image.wedding-program(src="/images/blank.png")
+                div.content
+                  div.header Wedding Program
+                  div.description Last edited on March 29, 2016
+            div.ui.divider
+            div.stats.none
+              h4.ui.header.aligned.center Cumulative Responses
+              div
+                img(src="/images/blank-chart.png", style="width:100%;")
+              div.ui.mini.statistics
+                div.statistic.orange
+                  div.value --
+                  div.label People
+                div.statistic.green
+                  div.value --
+                  div.label Responses
+                div.statistic.olive
+                  div.value --
+                  div.label SMS Used
+              div.ui.inverted.dimmer
+                div.content
+                  div.center
+                    h3.ui.grey.icon.header
+                      i.line.chart.icon
+                      |  No Stats Available
+
+    div#wb-bot-builder
+      div.header
+        div.ui.container
+          div.wb-bot-header.ui.horizontal.list
+            div.item
+              img.ui.avatar.image.about-you(src="/images/blank.png")
+              div.content
+                div.header(style="font-size: 1.3em;") Get Started: About You
+      div.body
+        div.ui.container
+          div.ui.segment
+            div.intro
+              h1.ui.header About Your Wedding
+              p Tell us about you, your other, and what you can about your wedding.
+              p This information will help build all of your bots.
+              div.ui.large.form
+                div.fields
+                  div.ten.wide.field
+                    label Your First Name
+                    input(type="text", placeholder="Your Answer")
+                div.fields
+                  div.ten.wide.field
+                    label Your Last Name
+                    input(type="text", placeholder="Your Answer")
+                div.fields
+                  div.ten.wide.field
+                    a.upload-image(href="javascript:;")
+                      i.ui.retro.camera.icon
+                      | Add a photo of just you
+                    input(type="file")
+                div.fields
+                  div.ten.wide.field
+                    label Their First Name
+                    input(type="text", placeholder="Your Answer")
+                div.fields
+                  div.ten.wide.field
+                    label Their Last Name
+                    input(type="text", placeholder="Your Answer")
+                div.fields
+                  div.ten.wide.field
+                    a.upload-image(href="javascript:;")
+                      i.ui.retro.camera.icon
+                      | Add a photo of just them
+                    input(name="photo", type="file")
+
+      div.footer
+        div.ui.container
+          div.ui.basic.right.aligned.segment
+            button.ui.labeled.icon.button
+              i.pause.icon
+              | Pause
+            button.ui.right.labeled.icon.button
+              i.arrow.icon
+              | Next

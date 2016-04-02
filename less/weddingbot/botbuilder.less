@@ -1,0 +1,62 @@
+/*******************************
+            Theme
+*******************************/
+
+@type    : 'global';
+@element : 'site';
+
+@import (multiple) '../semantic/theme.config';
+
+/*******************************
+        Bot Builder
+*******************************/
+#wb-bot-builder {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1001;
+
+  & > .header, & > .footer {
+    background: #fff;
+    box-shadow: 0 2px 4px #333;
+    border:1px solid #666;
+    width: 100%;
+    position: fixed;
+  }
+
+  & > .header {
+    top: 0;
+    border-width: 0 0 1px 0;
+  }
+
+  & > .footer {
+    bottom: 0;
+    border-width: 1px 0 0 0;
+  }
+}
+
+#wb-bot-builder > .body {
+  display: none;
+  overflow-y: scroll;
+  padding: 1em 0 6em;
+
+  .intro {
+    font-size: 1.4em;
+  }
+
+  .ui.form .fields .field {
+    margin: 2em 0 2em;
+  }
+
+  .ui.form .field>label {
+    font-size: 1.2em;
+  }
+
+  input[type="file"] {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,208 @@
+/*******************************
+            Theme
+*******************************/
+
+@type    : 'global';
+@element : 'site';
+
+@import (multiple) '../semantic/theme.config';
+
+svg {
+  display: block;
+}
+
+/*******************************
+            Axes
+*******************************/
+.axis {
+  font-size: 10px;
+  stroke: #eee;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #eee;
+  shape-rendering: crispEdges;
+  stroke-width: 1px;
+}
+
+.axis text {
+  stroke: #4E95C2;
+  stroke-width: 0.5;
+  font-size: 12px;
+}
+
+/*******************************
+            Grids
+*******************************/
+.x-grid, .y-grid {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke: #eee;
+  stroke-width: 1px;
+}
+
+
+/*-------------------
+        LINE
+--------------------*/
+
+.line {
+  fill: none;
+  stroke: @blue;
+  stroke-width: 1px;
+}
+
+/*-------------------
+        AREA
+--------------------*/
+.circle {
+  fill: @blue;
+}
+
+.area {
+  fill: @lightBlue;
+  stroke: none;
+  opacity: 0.1;
+}
+
+.bar {
+  fill: @blue;
+}
+
+.zeroline {
+  fill: none;
+  stroke: red;
+  stroke-width: 0.5px;
+  stroke-dasharray: 5 5;
+}
+
+.zerolinetext {
+  fill: red;
+}
+
+.overlay {
+  fill: none;
+  stroke: none;
+  pointer-events: all;
+}
+
+.focusLine {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 0.5px;
+}
+
+.focusCircle {
+  stroke: @white;
+}
+
+.focusCircleGlow {
+  fill: @blue;
+  opacity: 0.1;
+}
+
+.wb-chart {
+  position:relative;
+  min-height: 200px;
+}
+
+.wb-chart .ui.pointing.left.label {
+  display:none;
+  position: absolute;
+  height: 22px;
+  font-size: 10px;
+  font-weight: normal;
+  width: 54px;
+  padding: 5px 3px;
+  text-align: center;
+}
+
+/*-------------------
+     WATERFALL
+--------------------*/
+
+.cs-waterfall .axis.x path {
+  stroke: none;
+}
+
+.cs-waterfall .axis.x line {
+  stroke: none;
+}
+
+.cs-waterfall .axis.x line {
+  stroke: none;
+}
+
+.cs-waterfall .axis.x text {
+  font-size:11px;
+}
+
+.cs-waterfall .x-grid {
+  stroke-dasharray: 5;
+}
+
+/*-------------------
+     TIMESERIES
+--------------------*/
+
+.cs-timeseries  {
+  .axis.y path {
+    stroke: none;
+  }
+
+  .volume {
+    stroke: none;
+    fill: #909090;
+  }
+}
+
+
+/*******************************
+    Time-series Chart
+*******************************/
+.wb-chart-timeseries {
+  .bg {
+    fill: #fff;
+    stroke: #eee;
+  }
+
+  .ui.popup {
+    transition-property: top,left;
+    transition-duration: 0.08s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .ui.popup:before {
+    position: relative;
+    width: 0 !important;
+    height: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+  }
+
+  .line {
+    stroke-width: 2px;
+  }
+
+  .focusLine {
+    fill: none;
+    stroke-width: 1px;
+  }
+
+  .focusCircle {
+    stroke: @white;
+  }
+
+  .focusCircleGlow {
+    opacity: 0.3;
+  }
+
+  .dot {
+    fill: @white;
+    stroke: @blue;
+    stroke-width: 2;
+  }
+
+}

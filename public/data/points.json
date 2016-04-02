@@ -1,0 +1,38 @@
+[
+  {
+    "date":"2016-03-02",
+    "responses": 1
+  },
+  {
+    "date":"2016-03-04",
+    "responses": 2
+  },
+  {
+    "date":"2016-03-05",
+    "responses": 5
+  },
+  {
+    "date":"2016-03-06",
+    "responses": 8
+  },
+  {
+    "date":"2016-03-09",
+    "responses": 10
+  },
+  {
+    "date":"2016-03-12",
+    "responses": 12
+  },
+  {
+    "date":"2016-03-14",
+    "responses": 15
+  },
+  {
+    "date":"2016-03-18",
+    "responses": 18
+  },
+  {
+    "date":"2016-03-20",
+    "responses": 22
+  }
+]

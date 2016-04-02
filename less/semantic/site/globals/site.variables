@@ -1,0 +1,24 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+/*-------------------
+       Fonts
+--------------------*/
+
+@fontName          : 'Cabin';
+@googleFontSizes   : '400,700,300,400italic,300italic,700italic';
+@importGoogleFonts : false;
+
+/*-------------------
+        Paths
+--------------------*/
+
+/* For source only. Modified in gulp for dist */
+@imagePath : '/images';
+@fontPath  : '/fonts';
+
+/*-------------------
+      Site Colors
+--------------------*/
+@blue             : #4D95C2;

@@ -1,0 +1,6 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@headerFont    : @fontName;
+@pageFont      : @fontName;

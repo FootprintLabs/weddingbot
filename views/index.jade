@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  div#wb-login.ui.middle.aligned.center.aligned.grid
+    div.column
+      h2.ui.inverted.image.header
+        img(src="/images/logo.png", class="image")
+        div.content WeddingBot
+      form.ui.large.form(method="POST", action="/login")
+        div.ui.stacked.segment
+          if error
+            div.ui.negative.message
+              i.close.icon
+              div.header Authentication Failed!
+              p=error
+          div.field
+            div.ui.left.icon.input
+              i.user.icon
+              input(type="text", name="username", placeholder="E-mail address")
+          div.field
+            div.ui.left.icon.input
+              i.lock.icon
+              input(type="password", name="password", placeholder="Password")
+          button.ui.fluid.large.blue.submit.button(type="submit") Login
+
+        div.ui.error.message
