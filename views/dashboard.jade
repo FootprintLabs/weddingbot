@@ -161,74 +161,20 @@ block content
     div#wb-bot-builder
       div.header
         div.ui.container
-          div.wb-bot-header.ui.horizontal.list
-            div.item
-              img.ui.avatar.image.about-you(src="/images/blank.png")
-              div.content
-                div.header(style="font-size: 1.3em;") Get Started: About You
+          div.ui.two.column.grid
+            div.column
+              div.ui.basic.segment
+                div.wb-bot-header.ui.horizontal.list
+                  div.item
+                    img.ui.avatar.image.about-you(src="/images/blank.png")
+                    div.content
+                      div.header(style="font-size: 1.3em;") Get Started: About You
+            div.column
+              div.ui.basic.right.aligned.segment
+                button.ui.green.labeled.icon.button.save-form
+                  i.save.icon
+                  | Save
+                button.ui.button.cancel-form
+                  | Cancel
       div.body
         div.ui.container
-          div.ui.segment
-            div.intro
-              h1.ui.header About Your Wedding
-              p Tell us about you, your other, and what you can about your wedding.
-              p This information will help build all of your bots.
-              div.ui.large.form
-                div.fields
-                  div.ten.wide.field
-                    label Your First Name
-                    input(type="text", placeholder="Your Answer")
-                div.fields
-                  div.ten.wide.field
-                    label Your Last Name
-                    input(type="text", placeholder="Your Answer")
-                div.fields
-                  div.ten.wide.field
-                    a.upload-image(href="javascript:;")
-                      i.ui.retro.camera.icon
-                      | Add a photo of just you
-                    input(type="file")
-                div.fields
-                  div.ten.wide.field
-                    label Their First Name
-                    input(type="text", placeholder="Your Answer")
-                div.fields
-                  div.ten.wide.field
-                    label Their Last Name
-                    input(type="text", placeholder="Your Answer")
-                div.fields
-                  div.ten.wide.field
-                    a.upload-image(href="javascript:;")
-                      i.ui.retro.camera.icon
-                      | Add a photo of just them
-                    input(name="photo", type="file")
-                div.fields
-                  div.ten.wide.field
-                    label Your First Name after Marriage
-                    input(type="text", placeholder="Your Answer")
-                div.fields
-                  div.ten.wide.field
-                    label Your Last Name after Marriage
-                    input(type="text", placeholder="Your Answer")
-                div.fields
-                  div.ten.wide.field
-                    label Their First Name after Marriage
-                    input(type="text", placeholder="Your Answer")
-                div.fields
-                  div.ten.wide.field
-                    label Their Last Name after Marriage
-                    input(type="text", placeholder="Your Answer")
-                div.fields
-                  div.ten.wide.field
-                    label Location of your proposal
-                    input(type="text", placeholder="Your Answer")
-                div.fields(style="height:60px;")
-
-      div.footer
-        div.ui.container
-          div.ui.basic.right.aligned.segment
-            button.ui.green.labeled.icon.button.save-form
-              i.save.icon
-              | Save
-            button.ui.button.cancel-form
-              | Cancel

@@ -6,7 +6,7 @@ mongoose.connect('mongodb://localhost/weddingbot');
 const user = new User({
   name: 'Chris McCoy and Ciara Viehweg',
   username: 'chris@footprintlabs.co',
-  image: 'chris.png'
+  image: 'chris.jpg'
 });
 
 User.remove({}, function(err) {

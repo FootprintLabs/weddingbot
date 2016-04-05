@@ -1,0 +1,101 @@
+div.ui.segment
+  div.intro
+    h1.ui.header About Your Wedding
+    p Tell us about you, your other, and what you can about your wedding.
+    p This information will help build all of your bots.
+
+  div.ui.large.form
+    each module in modules
+      div.wb-module(data-module=module.name)
+
+        if module.link
+          a.wb-module-show-link(href="javascript:;")
+            i.icon.add.circle
+            =module.link
+
+        each field in module.fields
+          - var fieldName = module.name + '.' + field.name
+
+          div.wb-field(
+            data-name=fieldName,
+            class=module.hidden || field.hidden ? 'hidden' : '')
+
+            div.fields
+              div.ten.wide.field
+
+                if field.type === 'string'
+                  label= field.label
+                  input(name=fieldName, type="text", placeholder="Your Answer")
+
+                  if field.disableCheck
+                    div.ui.checkbox
+                      input(type="checkbox", data-action="disable", data-input=fieldName)
+                      label= field.disableCheck
+
+                else if field.type === 'number'
+                  label= field.label
+                  input(name=fieldName, type="number", placeholder="Your Answer")
+
+                else if field.type === 'image'
+                  a.upload-image(href="javascript:;")
+                    i.ui.retro.camera.icon
+                    = field.label
+                  input(type="file")
+                  input(type="hidden", name=fieldName)
+
+                else if field.type === 'daterange'
+                  label= field.label
+                  div.three.fields
+                    div.field
+                      div.ui.icon.input
+                        input.datepicker(type="text", placeholder="Month Day, Year")
+                        i.calendar.icon
+                    div.field.range-to  to 
+                    div.field
+                      div.ui.icon.input
+                        input.datepicker(type="text", placeholder="Month Day, Year")
+                        i.calendar.icon
+
+                else if field.type === 'date'
+                  label= field.label
+                  div.three.fields
+                    div.field
+                      div.ui.icon.input
+                        input.datepicker(type="text", placeholder="Month Day, Year")
+                        i.calendar.icon
+
+                else if field.type === 'time'
+                  label= field.label
+                  div.three.fields
+                    div.field
+                      div.ui.fluid.search.selection.dropdown.time
+                        input(type="hidden", name=fieldName)
+                        i.dropdown.icon
+                        div.default.text Choose
+                        div.menu
+
+                else if field.type === 'boolean'
+                  div.grouped.fields
+                    label= field.label
+                    div.field
+                      div.ui.radio.checkbox
+                        input(type="radio", name=fieldName, value="1", data-action="toggle", data-target=field.toggle)
+                        label Yes
+                    div.field
+                      div.ui.radio.checkbox
+                        input(type="radio", name=fieldName, value="0", data-action="toggle", data-target=field.toggle)
+                        label No
+
+              if field.sideCheck
+                - var check = field.sideCheck
+                div.six.wide.field
+                  label!='&nbsp;'
+                  div.ui.checkbox
+                    input(
+                      type="checkbox",
+                      data-action=check.action,
+                      data-input=fieldName,
+                      data-target=check.target
+                    )
+                    label= check.label
+

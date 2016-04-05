@@ -20,43 +20,75 @@
   background: rgba(0,0,0,0.5);
   z-index: 1001;
 
-  & > .header, & > .footer {
+  & > .header {
     background: #fff;
     box-shadow: 0 2px 4px #333;
     border:1px solid #666;
     width: 100%;
     position: fixed;
-  }
-
-  & > .header {
     top: 0;
     border-width: 0 0 1px 0;
   }
 
-  & > .footer {
-    bottom: 0;
-    border-width: 1px 0 0 0;
-  }
 }
 
 #wb-bot-builder > .body {
   display: none;
   overflow-y: scroll;
-  padding: 1em 0 6em;
+
+  .ui.container {
+    position: relative;
+    padding: 1em 0;
+  }
+
+  .ui.container > .segment {
+    padding: 0;
+  }
 
   .intro {
+    padding: 2em;
     font-size: 1.4em;
   }
 
-  .ui.form .fields .field {
+  .wb-module {
+    border: 1px dashed #e1e1e1;
+    border-width: 1px 0 0 0;
+    padding: 2em;
+  }
+
+  .ui.form .wb-field {
     margin: 2em 0 2em;
   }
 
-  .ui.form .field>label {
-    font-size: 1.2em;
+  .ui.form .wb-field.hidden {
+    display: none;
+  }
+
+  .ui.form .field > label,
+  .ui.form .fields > label {
+    font-size: 1.3em;
+    text-transform: inherit;
+    font-weight: normal;
+    line-height: 2em;
+  }
+
+  .ui.form .fields .field.range-to {
+    width: 10%;
+    vertical-align: middle;
+    line-height: 2.6em;
+    text-align: center;
+  }
+
+  .ui.progress {
+    width: 60%
   }
 
   input[type="file"] {
     opacity: 0;
+    width: 1px;
+  }
+
+  input + .ui.checkbox {
+    margin-top: 1em;
   }
 }

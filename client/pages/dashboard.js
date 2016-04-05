@@ -11,7 +11,8 @@ $.fn.dropdown = Dropdown;
 $.fn.transition = Transition;
 
 module.exports = () => {
-  const $elem = $('#wb-dashboard');
+  const $elem = $('#wb-dashboard'),
+        builder = BotBuilder();
 
   $.getJSON('/data/points.json', data => {
 
@@ -35,7 +36,6 @@ module.exports = () => {
   $('#wb-header .dropdown').dropdown();
 
   $('#wb-template-bar .template:eq(0)').click(e => {
-    const builder = BotBuilder();
     builder.show();
   });
 };

@@ -3,6 +3,7 @@ const express = require('express'),
       passport = require('passport'),
       multer = require('multer'),
       fs = require('fs'),
+      im = require('imagemagick'),
       User = require('../models/user');
 
 /* GET home page. */
@@ -31,33 +32,36 @@ router.get('/dashboard', isLoggedIn, (req, res) => {
   }
 });
 
-var upload = multer({
-  dest: 'public/uploads/',
-  rename: function (fieldname, filename) {
-    console.log(filename);
-    return Date.now() + filename.replace(/\W+/g, '-').toLowerCase();
-  }
+const uploadPath = __dirname + '/../public/uploads/';
+const upload = multer({
+  dest: uploadPath
 })
 
 router.post('/upload-image', upload.single('file'), (req, res) => {
-  var filename = Date.now() + req.file.originalname.replace(/\s+/g, '-').toLowerCase();
+  var filename = Date.now() +
+    req.file.originalname.replace(/\s+/g, '-').toLowerCase() + '.jpg';
+  /*
   fs.rename('public/uploads/' + req.file.filename, 'public/uploads/' + filename, function(err) {
     res.json({
       url: '/uploads/' + filename
     });
   });
-});
+  */
 
-/*
-router.post('/login', passport.authenticate('local', { failureRedirect: '/', failureFlash: true }), function(req, res, next) {
-  req.session.save(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect('/dashboard');
+  im.resize({
+    srcPath: uploadPath + req.file.filename,
+    dstPath: uploadPath + filename,
+    quality: 0.8,
+    format: 'jpg',
+    progressive: false,
+    width:   300
+  }, function(err, stdout, stderr){
+    res.json({
+      url: '/uploads/' + filename
+    });
   });
+
 });
-*/
 
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/dashboard',
