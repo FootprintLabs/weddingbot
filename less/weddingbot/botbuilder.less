@@ -30,6 +30,23 @@
     border-width: 0 0 1px 0;
   }
 
+  @media only screen and (max-width: @largestMobileScreen) {
+    & > .header {
+
+      .column {
+        padding-top: 0 !important;
+      }
+
+      .column:first-child {
+        padding-top: 1em !important;
+        padding-bottom: 0 !important;
+      }
+
+      .ui.segment {
+        padding-top: 0;
+      }
+    }
+  }
 }
 
 #wb-bot-builder > .body {
@@ -57,7 +74,7 @@
   }
 
   .ui.form .wb-field {
-    margin: 2em 0 2em;
+    margin: 2em 0;
   }
 
   .ui.form .wb-field.hidden {
@@ -90,5 +107,28 @@
 
   input + .ui.checkbox {
     margin-top: 1em;
+  }
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    .ui.container {
+      position: relative;
+      padding: 0;
+      margin: 0 !important;
+    }
+
+    .wb-module {
+      border: 1px dashed #ddd;
+      border-width: 1px 0 0 0;
+      padding: 1em;
+    }
+
+    .ui.form .wb-field {
+      margin: 1em 0;
+    }
+
+    .ui.form .wb-field .six.wide.field > label {
+      display:none;
+    }
+
   }
 }

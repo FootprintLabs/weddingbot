@@ -2,6 +2,7 @@ doctype html
 html
   head
     title WeddingBot
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
     link(href="/favicon.ico", rel="shortcut icon", type="image/x-icon")
     link(rel='stylesheet', href='/css/styles.css')
     script(type="text/javascript", src='/js/scripts.js')
@@ -18,6 +19,21 @@ html
             div.ui.dropdown.item= user.name
               i.dropdown.icon
               div.menu
+                a.item(href="javascript:;")
+                  i.ui.setting.icon
+                  | Settings
+                a.item(href="javascript:;")
+                  i.ui.sign.out.icon
+                  | Logout
+          div.right.menu.mobile
+            div.ui.dropdown.item
+              i.ellipsis.vertical.big.icon
+              div.menu
+                div.item
+                  img(src='/images/' + user.image)
+                  |  
+                  = user.name
+                div.divider
                 a.item(href="javascript:;")
                   i.ui.setting.icon
                   | Settings

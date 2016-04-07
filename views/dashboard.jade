@@ -2,7 +2,10 @@ extends layout
 
 block content
   div#wb-dashboard.ui.container
-    div.ui.basic.segment
+
+    div#wb-templates.ui.basic.segment
+      i.ui.inverted.chevron.left.icon
+      i.ui.inverted.chevron.right.icon
       h1.ui.inverted.header Start a new SMS bot
       div#wb-template-bar
         div
@@ -32,7 +35,7 @@ block content
 
     div#wb-user-bots.ui.basic.segment
       h1.ui.inverted.header Recent Bots
-      div.ui.three.column.grid
+      div.ui.three.column.stackable.grid
         div.column
           div.ui.segment
             div.ui.orange.ribbon.label
@@ -161,7 +164,7 @@ block content
     div#wb-bot-builder
       div.header
         div.ui.container
-          div.ui.two.column.grid
+          div.ui.two.column.stackable.grid
             div.column
               div.ui.basic.segment
                 div.wb-bot-header.ui.horizontal.list
