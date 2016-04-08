@@ -11,11 +11,13 @@ module.exports = {
         {
           name: 'firstName',
           label: 'Your First Name',
+          required: true,
           type: 'string'
         },
         {
           name: 'lastName',
           label: 'Your Last Name',
+          required: true,
           type: 'string'
         },
         {
@@ -31,11 +33,13 @@ module.exports = {
         {
           name: 'firstName',
           label: 'Their First Name',
+          required: true,
           type: 'string'
         },
         {
           name: 'lastName',
           label: 'Their Last Name',
+          required: true,
           type: 'string'
         },
         {

@@ -25,7 +25,13 @@ div.ui.segment
 
                 if field.type === 'string'
                   label= field.label
-                  input(name=fieldName, type="text", placeholder="Your Answer")
+                  if field.required
+                    div.ui.corner.labeled.input
+                      input(name=fieldName, type="text", placeholder="Your Answer")
+                      div.ui.corner.label
+                        i.asterisk.icon
+                  else
+                    input(name=fieldName, type="text", placeholder="Your Answer")
 
                   if field.disableCheck
                     div.ui.checkbox

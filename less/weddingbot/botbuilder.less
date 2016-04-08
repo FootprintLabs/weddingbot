@@ -28,6 +28,19 @@
     position: fixed;
     top: 0;
     border-width: 0 0 1px 0;
+
+    .ui.progress {
+      margin-bottom: 0;
+      height: 1.75em;
+    }
+
+    .ui.progress .bar {
+      border-radius: 0;
+    }
+
+    .ui.progress .bar .progress {
+      transition: right 0.5s, color 0.5s
+    }
   }
 
   @media only screen and (max-width: @largestMobileScreen) {
@@ -71,6 +84,10 @@
     border: 1px dashed #e1e1e1;
     border-width: 1px 0 0 0;
     padding: 2em;
+  }
+
+  .wb-module.highlight {
+    background: #FFFDF5;
   }
 
   .ui.form .wb-field {
@@ -128,6 +145,10 @@
 
     .ui.form .wb-field .six.wide.field > label {
       display:none;
+    }
+
+    .ui.progress {
+      width: 100%
     }
 
   }

@@ -521,7 +521,8 @@ $.fn.progress = Progress;
 module.exports = function () {
   var $elem = $('#wb-bot-builder'),
       $body = $elem.children('.body'),
-      $header = $elem.children('.header');
+      $header = $elem.children('.header'),
+      $progress = $header.children('.progress');
 
   var bodyLoaded = false;
 
@@ -604,6 +605,10 @@ module.exports = function () {
 
     $elem.find('.ui.dropdown.time').dropdown();
 
+    $elem.find('input').focusin(function (e) {
+      return highlightModule(e.currentTarget);
+    });
+
     $elem.find('.wb-module-show-link').click(function (e) {
       $(e.currentTarget).nextAll('.wb-field.hidden').removeClass('hidden');
 
@@ -616,7 +621,46 @@ module.exports = function () {
       $(e.currentTarget).remove();
     });
 
+    initProgress();
     uploadImage();
+  }
+
+  function initProgress() {
+    var selectors = '.wb-field input[type="text"],' + '.wb-field input[type="number"]',
+        $inputs = $body.find(selectors);
+
+    var completed = 0;
+    var count = $inputs.length;
+
+    $progress.find('.progress').css({ right: '-4em', color: '#333' }).html('0 of ' + count);
+
+    $progress.progress({
+      total: count,
+      label: 'ratio',
+      text: {
+        ratio: '{value} of {total}'
+      },
+      onChange: function onChange(percent, value) {
+        if ($progress.find('.bar').width() < 80) {
+          $progress.find('.progress').css({ right: '-4em', color: '#333' });
+        } else {
+          $progress.find('.progress').removeAttr('style');
+        }
+      }
+    });
+
+    $inputs.focusout(function (e) {
+      var $input = $(e.currentTarget),
+          sameValue = $input.data('lastValue') === $input.val();
+
+      if ($input.val().length && !sameValue) {
+        $progress.progress('increment');
+      } else if (!sameValue) {
+        $progress.progress('decrement');
+      }
+
+      $input.data('lastValue', $input.val());
+    });
   }
 
   function uploadImage() {
@@ -679,7 +723,13 @@ module.exports = function () {
     });
   }
 
+  function highlightModule(elem) {
+    $('.wb-module').removeClass('highlight');
+    $(elem).parents('.wb-module').addClass('highlight');
+  }
+
   function checkAction(elem, isChecked) {
+    highlightModule(elem);
     var data = $(elem).data();
 
     if (data.action === 'disable') {
@@ -687,11 +737,13 @@ module.exports = function () {
         var $input = $body.find('input[name="' + data.input + '"]');
         if (isChecked) {
           $input.hide();
+          $progress.progress('increment');
         } else {
           $input.show();
           _.delay(function () {
             return $input.focus();
           }, 100);
+          $progress.progress('decrement');
         }
       })();
     } else if (data.action === 'same') {
@@ -701,13 +753,21 @@ module.exports = function () {
 
         if (isChecked) {
           $input.val($target.val());
+          $progress.progress('increment');
         } else {
           $input.val("");
           _.delay(function () {
             return $input.focus();
           }, 100);
+          $progress.progress('decrement');
         }
       })();
+    } else if (data.action === 'dont-know') {
+      if (isChecked) {
+        $progress.progress('increment');
+      } else {
+        $progress.progress('decrement');
+      }
     } else if (data.action === 'toggle') {
       (function () {
         var val = _.toInteger($(elem).val()),
