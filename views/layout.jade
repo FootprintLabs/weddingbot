@@ -8,36 +8,4 @@ html
     script(type="text/javascript", src='/js/scripts.js')
   body
     if user
-      div#wb-header.ui.container
-        div.ui.text.inverted.menu
-          a.item.logo
-            img(src="/images/logo.png")
-            | WeddingBot
-          div.right.menu
-            div.item
-              img(src='/images/' + user.image, style="box-shadow:0 0 4px #333")
-            div.ui.dropdown.item= user.name
-              i.dropdown.icon
-              div.menu
-                a.item(href="javascript:;")
-                  i.ui.setting.icon
-                  | Settings
-                a.item(href="javascript:;")
-                  i.ui.sign.out.icon
-                  | Logout
-          div.right.menu.mobile
-            div.ui.dropdown.item
-              i.ellipsis.vertical.big.icon
-              div.menu
-                div.item
-                  img(src='/images/' + user.image)
-                  |  
-                  = user.name
-                div.divider
-                a.item(href="javascript:;")
-                  i.ui.setting.icon
-                  | Settings
-                a.item(href="javascript:;")
-                  i.ui.sign.out.icon
-                  | Logout
     block content

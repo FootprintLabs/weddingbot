@@ -4,8 +4,8 @@ block content
   div#wb-login.ui.middle.aligned.center.aligned.grid
     div.column
       h2.ui.inverted.image.header
-        img(src="/images/logo.png", class="image")
-        div.content WeddingBot
+        img(src="/images/logo.png", class="image", style="width:1.6em")
+        div.content(style="font-size:1.5em;") WeddingBot
       form.ui.large.form(method="POST", action="/login")
         div.ui.stacked.segment
           if error
@@ -21,6 +21,6 @@ block content
             div.ui.left.icon.input
               i.lock.icon
               input(type="password", name="password", placeholder="Password", value="weddingbot")
-          button.ui.fluid.large.blue.submit.button(type="submit") Login
+          button.ui.fluid.large.purple.submit.button(type="submit") Login
 
         div.ui.error.message

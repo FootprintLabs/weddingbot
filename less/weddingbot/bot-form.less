@@ -1,0 +1,186 @@
+/*******************************
+            Theme
+*******************************/
+
+@type    : 'global';
+@element : 'site';
+
+@import (multiple) '../semantic/theme.config';
+
+/*******************************
+          Variables
+*******************************/
+
+@botFormHeaderHeight: 71px;
+
+/*******************************
+        Bot Builder
+*******************************/
+#wb-bot-form {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1001;
+
+  & > .header {
+    background: #fff;
+    box-shadow: 0 2px 4px #333;
+    width: 100%;
+    border-width: 0 0 1px 0;
+    height: @botFormHeaderHeight;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .ui.progress {
+      margin-bottom: 0;
+      height: 1.75em;
+    }
+
+    .ui.progress .bar {
+      border-radius: 0;
+    }
+
+    .ui.progress .bar .progress {
+      transition: right 0.5s, color 0.5s;
+    }
+  }
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    & > .header {
+
+      .column {
+        padding-top: 0 !important;
+      }
+
+      .column:first-child {
+        padding-top: 1em !important;
+        padding-bottom: 0 !important;
+      }
+
+      .ui.segment {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+#wb-bot-form > .body {
+  overflow-y: scroll;
+  height: calc(~'100% - '@botFormHeaderHeight);
+  margin-top: @botFormHeaderHeight;
+  transition: opacity 0.5s;
+
+  .ui.container {
+    position: relative;
+  }
+
+  .ui.container > .segment {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+  }
+
+  .intro {
+    padding: 2em;
+    font-size: 1.4em;
+  }
+
+  .wb-module {
+    border: 1px dashed #e1e1e1;
+    border-width: 1px 0 0 0;
+    padding: 2em;
+  }
+
+  .wb-module.highlight {
+    background: #FFFDF5;
+  }
+
+  .wb-field {
+    margin: 2em 0;
+  }
+
+  .wb-field.hidden {
+    display: none;
+  }
+
+  .wb-field-image img {
+    height: 150px;
+    display: block;
+    margin-bottom: 0.5em;
+  }
+
+  .ui.form .field > label,
+  .ui.form .fields > label {
+    font-size: 1.3em;
+    text-transform: inherit;
+    font-weight: normal;
+    line-height: 2em;
+  }
+
+  .ui.form .fields .field.range-to {
+    width: 10%;
+    vertical-align: middle;
+    line-height: 2.6em;
+    text-align: center;
+  }
+
+  .ui.progress {
+    width: 60%
+  }
+
+  input[type="file"] {
+    opacity: 0;
+    width: 1px;
+  }
+
+  input + .ui.checkbox {
+    margin-top: 1em;
+  }
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    .ui.container {
+      position: relative;
+      padding: 0;
+      margin: 0 !important;
+    }
+
+    .wb-module {
+      border: 1px dashed #ddd;
+      border-width: 1px 0 0 0;
+      padding: 1em;
+    }
+
+    .ui.form .wb-field {
+      margin: 1em 0;
+    }
+
+    .ui.form .wb-field .six.wide.field > label {
+      display:none;
+    }
+
+    .ui.progress {
+      width: 100%
+    }
+
+  }
+}
+
+#wb-bot-form .wb-module-message {
+
+  .tag {
+    background: #FFFBDE;
+    display: inline-block;
+    border-bottom: 1px solid #D2CCA2;
+    cursor: pointer;
+
+    &:hover {
+      background: #EFEAC5;
+    }
+  }
+
+}

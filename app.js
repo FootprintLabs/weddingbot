@@ -11,6 +11,7 @@ const express = require('express'),
       LocalStrategy = require('passport-local').Strategy;
 
 const routes = require('./routes/index'),
+      api = require('./routes/api'),
       forms = require('./routes/forms');
 
 const app = express();
@@ -36,6 +37,7 @@ app.use(passport.session());
 app.set('trust proxy', true);
 
 app.use('/', routes);
+app.use('/api', api);
 app.use('/forms', forms);
 
 // catch 404 and forward to error handler

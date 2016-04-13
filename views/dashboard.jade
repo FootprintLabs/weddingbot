@@ -1,165 +1,223 @@
 extends layout
 
 block content
-  div#wb-dashboard.ui.container
-
-    div#wb-templates.ui.basic.segment
-      i.ui.inverted.chevron.left.icon
-      i.ui.inverted.chevron.right.icon
-      h1.ui.inverted.header Start a new SMS bot
-      div#wb-template-bar
-        div
-          div.template.about-you
-            div.icon
-            div.text Get Started: About You
-        div
-          div.template.wedding-invite
-            div.icon
-            div.text Wedding Invite Bot
-        div
-          div.template.venue-directions
-            div.icon
-            div.text Venue Directions Bot
-        div
-          div.template.wedding-program
-            div.icon
-            div.text Wedding Program Bot
-        div
-          div.template.reception-info
-            div.icon
-            div.text Reception Info Bot
-        div
-          div.template.thank-you
-            div.icon
-            div.text Thank You Bot
-
-    div#wb-user-bots.ui.basic.segment
-      h1.ui.inverted.header Recent Bots
-      div.ui.three.column.stackable.grid
-        div.column
-          div.ui.segment
-            div.ui.orange.ribbon.label
-              i.ui.edit.icon
-              | Draft
-            div.wb-bot-header.ui.horizontal.list
+  header
+    div#wb-header.ui.container
+      div.ui.text.inverted.menu
+        a.item.logo
+          img(src="/images/logo.png")
+          | WeddingBot
+        div.right.menu
+          div.item
+            img(src='/images/' + user.image, style="box-shadow:0 0 4px #333")
+          div.ui.dropdown.item= user.name
+            i.dropdown.icon
+            div.menu
+              a.item(href="javascript:;")
+                i.ui.setting.icon
+                | Settings
+              a.item(href="javascript:;")
+                i.ui.sign.out.icon
+                | Logout
+        div.right.menu.mobile
+          div.ui.dropdown.item
+            i.ellipsis.vertical.big.icon
+            div.menu
               div.item
-                img.ui.avatar.image.save-the-date(src="/images/blank.png")
-                div.content
-                  div.header Save the Date
-                  div.description Last edited on March 20, 2016
-            div.ui.divider
-            div.stats.none
-              h4.ui.header.aligned.center Cumulative Responses
-              div
-                img(src="/images/blank-chart.png", style="width:100%;")
-              div.ui.mini.statistics
-                div.statistic.orange
-                  div.value --
-                  div.label People
-                div.statistic.green
-                  div.value --
-                  div.label Responses
-                div.statistic.olive
-                  div.value --
-                  div.label SMS Used
-              div.ui.inverted.dimmer
-                div.content
-                  div.center
-                    h3.ui.grey.icon.header
-                      i.line.chart.icon
-                      |  No Stats Available
+                img(src='/images/' + user.image)
+                |  
+                = user.name
+              div.divider
+              a.item(href="javascript:;")
+                i.ui.setting.icon
+                | Settings
+              a.item(href="javascript:;")
+                i.ui.sign.out.icon
+                | Logout
 
-        div.column
-          div.ui.segment
-            div.ui.green.ribbon.label
-              i.ui.lightning.icon
-              | Published
-            div.wb-bot-header.ui.horizontal.list
-              div.item
-                img.ui.avatar.image.wedding-invite(src="/images/blank.png")
-                div.content
-                  div.header Wedding Invite
-                  div.description Published on March 11, 2016
-            div.ui.divider
-            div.stats
-              h4.ui.header.aligned.center Cumulative Responses
-              div.wb-chart
-              div.ui.mini.statistics
-                div.statistic.orange
-                  div.value 120
-                  div.label People
-                div.statistic.green
-                  div.value 52
-                  div.label Responses
-                div.statistic.olive
-                  div.value 72
-                  div.label SMS Used
 
-        div.column
-          div.ui.segment
-            div.ui.teal.ribbon.label
-              i.ui.clock.icon
-              | Scheduled
-            div.wb-bot-header.ui.horizontal.list
-              div.item
-                img.ui.avatar.image.venue-directions(src="/images/blank.png")
-                div.content
-                  div.header Venue Directions
-                  div.description Scheduled on April 1, 2016
-            div.ui.divider
-            div.stats.none
-              h4.ui.header.aligned.center Cumulative Responses
-              div
-                img(src="/images/blank-chart.png", style="width:100%;")
-              div.ui.mini.statistics
-                div.statistic.orange
-                  div.value --
-                  div.label People
-                div.statistic.green
-                  div.value --
-                  div.label Responses
-                div.statistic.olive
-                  div.value --
-                  div.label SMS Used
-              div.ui.inverted.dimmer
-                div.content
-                  div.center
-                    h3.ui.grey.icon.header
-                      i.line.chart.icon
-                      |  No Stats Available
+    div.ui.inverted.secondary.menu(style="border-bottom: 1px dashed #5F862A;padding: 0 0 1em;")
+      div.ui.container
+        div.right.menu
+          div.item 
+            div.ui.labeled.button
+              div.ui.orange.button
+                | # of SMS sent
+              a.ui.basic.left.pointing.orange.label 54
+            div.ui.labeled.button(style="margin-left:0.4em;")
+              div.ui.pink.button
+                | # of SMS received
+              a.ui.basic.left.pointing.pink.label 84
+            div.ui.labeled.button(style="margin-left:0.4em;")
+              div.ui.purple.button
+                | # of SMS remaining
+              a.ui.basic.left.pointing.purple.label 89
+          div.item 
+            button.ui.green.button Buy More SMS
 
-        div.column
-          div.ui.segment
-            div.ui.orange.ribbon.label
-              i.ui.edit.icon
-              | Draft
-            div.wb-bot-header.ui.horizontal.list
-              div.item
-                img.ui.avatar.image.wedding-program(src="/images/blank.png")
-                div.content
-                  div.header Wedding Program
-                  div.description Last edited on March 29, 2016
-            div.ui.divider
-            div.stats.none
-              h4.ui.header.aligned.center Cumulative Responses
-              div
-                img(src="/images/blank-chart.png", style="width:100%;")
-              div.ui.mini.statistics
-                div.statistic.orange
-                  div.value --
-                  div.label People
-                div.statistic.green
-                  div.value --
-                  div.label Responses
-                div.statistic.olive
-                  div.value --
-                  div.label SMS Used
-              div.ui.inverted.dimmer
-                div.content
-                  div.center
-                    h3.ui.grey.icon.header
-                      i.line.chart.icon
-                      |  No Stats Available
+
+    div#wb-templates
+      div.ui.container
+        div.ui.basic.segment
+          i.ui.inverted.chevron.left.icon
+          i.ui.inverted.chevron.right.icon
+          h1.ui.inverted.header(style="margin-top:0;") Start a new SMS bot
+          div#wb-template-bar
+            div
+              div.template.about-you
+                div.icon
+                div.text Get Started: About You
+            div
+              div.template.wedding-invite
+                div.icon
+                div.text Wedding Invite Bot
+            div
+              div.template.reception-info
+                div.icon
+                div.text Reception Info Bot
+            div
+              div.template.wedding-program
+                div.icon
+                div.text Wedding Program Bot
+            div
+              div.template.registry
+                div.icon
+                div.text Registry Bot
+            div
+              div.template.thank-you
+                div.icon
+                div.text Thank You Bot
+
+  div#wb-dashboard
+
+    div.ui.container
+      div#wb-user-bots.ui.basic.segment
+        h1.ui.inverted.header Recent Bots
+        div.ui.three.column.stackable.grid
+          div.column
+            div.ui.segment
+              div.ui.orange.ribbon.label
+                i.ui.edit.icon
+                | Draft
+              div.wb-bot-header.ui.horizontal.list
+                div.item
+                  img.ui.avatar.image.save-the-date(src="/images/blank.png")
+                  div.content
+                    div.header Save the Date
+                    div.description Last edited on March 20, 2016
+              div.ui.divider
+              div.stats.none
+                h4.ui.header.aligned.center Cumulative Responses
+                div
+                  img(src="/images/blank-chart.png", style="width:100%;")
+                div.ui.mini.statistics
+                  div.statistic.orange
+                    div.value --
+                    div.label People
+                  div.statistic.green
+                    div.value --
+                    div.label Responses
+                  div.statistic.olive
+                    div.value --
+                    div.label SMS Used
+                div.ui.inverted.dimmer
+                  div.content
+                    div.center
+                      h3.ui.grey.icon.header
+                        i.line.chart.icon
+                        |  No Stats Available
+
+          div.column
+            div.ui.segment
+              div.ui.green.ribbon.label
+                i.ui.lightning.icon
+                | Published
+              div.wb-bot-header.ui.horizontal.list
+                div.item
+                  img.ui.avatar.image.wedding-invite(src="/images/blank.png")
+                  div.content
+                    div.header Wedding Invite
+                    div.description Published on March 11, 2016
+              div.ui.divider
+              div.stats
+                h4.ui.header.aligned.center Cumulative Responses
+                div.wb-chart
+                div.ui.mini.statistics
+                  div.statistic.orange
+                    div.value 120
+                    div.label People
+                  div.statistic.green
+                    div.value 52
+                    div.label Responses
+                  div.statistic.olive
+                    div.value 72
+                    div.label SMS Used
+
+          div.column
+            div.ui.segment
+              div.ui.teal.ribbon.label
+                i.ui.clock.icon
+                | Scheduled
+              div.wb-bot-header.ui.horizontal.list
+                div.item
+                  img.ui.avatar.image.venue-directions(src="/images/blank.png")
+                  div.content
+                    div.header Venue Directions
+                    div.description Scheduled on April 1, 2016
+              div.ui.divider
+              div.stats.none
+                h4.ui.header.aligned.center Cumulative Responses
+                div
+                  img(src="/images/blank-chart.png", style="width:100%;")
+                div.ui.mini.statistics
+                  div.statistic.orange
+                    div.value --
+                    div.label People
+                  div.statistic.green
+                    div.value --
+                    div.label Responses
+                  div.statistic.olive
+                    div.value --
+                    div.label SMS Used
+                div.ui.inverted.dimmer
+                  div.content
+                    div.center
+                      h3.ui.grey.icon.header
+                        i.line.chart.icon
+                        |  No Stats Available
+
+        div.ui.segment
+          h2.ui.pink.header Your Wedding Community
+            button#add-user.ui.right.floated.pink.button
+              i.icon.user
+              | Add User
+          table.ui.basic.table
+            thead
+              tr
+                th Phone
+                th First
+                th Last
+                th Email
+                th Status
+            tbody
+              tr
+                td (206) 910-8489
+                td Chris
+                td McCoy
+                td chris@data4america.org
+                td Pending
+              tr
+                td (206) 910-8489
+                td Chris
+                td McCoy
+                td chris@data4america.org
+                td Pending
+              tr
+                td (206) 910-8489
+                td Chris
+                td McCoy
+                td chris@data4america.org
+                td Pending
 
     div#wb-bot-builder
       div.header
@@ -185,3 +243,28 @@ block content
 
       div.body
         div.ui.container
+
+    div#wb-modal-user.ui.small.modal
+      i.close.icon
+      div.header Add a new user
+      div.content
+        form.ui.form
+          div.two.fields
+            div.field
+              label First Name
+              input(type="text", name="name", placeholder="")
+            div.field
+              label Last Name
+              input(type="text", name="name", placeholder="")
+          div.field
+            label Phone Number
+            input(type="text", name="email", placeholder="(xxx) xxx-xxxx")
+          div.field
+            label Email Address
+            input(type="text", name="phone", placeholder="")
+      div.actions
+        div.ui.button.pink.ok Add User
+        div.ui.button.cacel Cancel
+
+
+    div#wb-bot-form-container

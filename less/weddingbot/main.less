@@ -8,7 +8,7 @@
 @import (multiple) '../semantic/theme.config';
 
 body, html {
-  background: linear-gradient(#255188, #4E96C3) fixed;
+  background: linear-gradient(#B985B5,#D7B2D4) fixed;
 }
 
 #wb-login {
@@ -17,6 +17,12 @@ body, html {
   .column {
     max-width: 450px;
   }
+}
+
+header {
+  border: 1px solid #88A65C;
+  background: linear-gradient(-45deg,#C0DB98,#85A955);
+  box-shadow: inset 0 -3px 10px #83A058;
 }
 
 #wb-header {
@@ -48,6 +54,7 @@ body, html {
 }
 
 #wb-templates {
+
   .chevron.icon {
     display:none;
   }
@@ -111,7 +118,7 @@ body, html {
   }
 
   .template:hover {
-    box-shadow: 0 0 10px #0E305A;
+    box-shadow: 0 0 10px #4E6D21;
   }
 
   .template:hover .icon {
@@ -128,6 +135,10 @@ body, html {
 
   .template.wedding-invite .icon {
     background-position: -450px -3px;
+  }
+
+  .template.registry .icon {
+    background-position: -150px -300px;
   }
 
   .template.venue-directions .icon {
@@ -173,6 +184,7 @@ body, html {
 
   .ui.statistics {
     justify-content: space-around;
+    font-size: 0.9em;
 
     & > .statistic {
       margin-bottom: 0;
@@ -237,5 +249,6 @@ body, html {
 
 @import (multiple) 'chart.less';
 @import (multiple) 'botbuilder.less';
+@import (multiple) 'bot-form.less';
 @import (multiple) 'datepicker.less';
 

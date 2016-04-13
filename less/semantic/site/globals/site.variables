@@ -6,9 +6,19 @@
        Fonts
 --------------------*/
 
-@fontName          : 'Cabin';
+@fontName          : 'Dancing Script';
 @googleFontSizes   : '400,700,300,400italic,300italic,700italic';
 @importGoogleFonts : false;
+
+/*-------------------
+      Base Sizes
+--------------------*/
+
+/* This is the single variable that controls them all */
+@emSize   : 16px;
+
+/* The size of page text  */
+@fontSize : 16px;
 
 /*-------------------
         Paths

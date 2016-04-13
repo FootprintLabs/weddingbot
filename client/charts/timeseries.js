@@ -240,9 +240,6 @@ class Timeseries {
             d = mouseDate - d0[propX] > d1[propY] - mouseDate ? d1 : d0;
           }
 
-
-          console.log(d);
-
           popupSeries.data = d;
 
           x = scales.x(d[propX]);
