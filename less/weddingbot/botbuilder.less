@@ -28,6 +28,11 @@
     position: fixed;
     top: 0;
     border-width: 0 0 1px 0;
+    z-index:2;
+
+    .list .header {
+      font-size: 1.3em;
+    }
 
     .ui.progress {
       margin-bottom: 0;
@@ -41,10 +46,18 @@
     .ui.progress .bar .progress {
       transition: right 0.5s, color 0.5s
     }
+
+    .mobile {
+      display: none;
+    }
   }
 
   @media only screen and (max-width: @largestMobileScreen) {
     & > .header {
+
+      .list .header {
+        font-size: 1.1em;
+      }
 
       .column {
         padding-top: 0 !important;
@@ -56,7 +69,15 @@
       }
 
       .ui.segment {
-        padding-top: 0;
+        padding: 1em 0;
+      }
+
+      .non-mobile {
+        display: none;
+      }
+
+      .mobile {
+        display: block;
       }
     }
   }

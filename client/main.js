@@ -18,6 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 WebFont.load({
   google: {
-    families: ['Dancing Script:n4,b7']
+    families: ['Lato:n4,b7']
   }
 });

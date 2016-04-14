@@ -104,10 +104,10 @@ class Timeseries {
         .attr('x2', 0).attr('y2', this.props.height)
       .selectAll('stop')
         .data([
-          {offset: '0%', color: '#4F9ED6', opacity: '1'},
-          {offset: '70%', color: '#4F9ED6', opacity: '1'},
-          {offset: '80%', color: '#4F9ED6', opacity: '0.5'},
-          {offset: '100%', color: '#4F9ED6', opacity: '0'}
+          {offset: '0%', color: '#DF3795', opacity: '1'},
+          {offset: '70%', color: '#DF3795', opacity: '1'},
+          {offset: '80%', color: '#DF3795', opacity: '0.5'},
+          {offset: '100%', color: '#DF3795', opacity: '0'}
         ])
       .enter().append('stop')
         .attr('offset', function(d) { return d.offset; })

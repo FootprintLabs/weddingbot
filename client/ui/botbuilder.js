@@ -98,7 +98,7 @@ module.exports = function() {
       });
     });
 
-    $elem.find('.ui.dropdown.time').dropdown();
+    $elem.find('.ui.dropdown').dropdown();
 
     $elem.find('input').focusin(e => highlightModule(e.currentTarget));
 
@@ -230,6 +230,24 @@ module.exports = function() {
   function highlightModule(elem) {
     $('.wb-module').removeClass('highlight');
     $(elem).parents('.wb-module').addClass('highlight');
+
+    if (isMobile()) {
+      _.delay(() => {
+        let to = $(elem).offset().top;
+        const $form = $(elem).parents('.ui.form'),
+              $field = $(elem).parents('.wb-field');
+
+        $body.scrollTop($form.position().top + $field.position().top);
+      }, 200);
+    }
+  }
+
+  function isMobile() {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      return true;
+    }
+
+    return false;
   }
 
   function checkAction(elem, isChecked) {

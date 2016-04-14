@@ -200,7 +200,7 @@ var Timeseries = function () {
       });
 
       if (this.props.series.length === 1) {
-        this.svg.append('linearGradient').attr('id', 'area-gradient').attr('gradientUnits', 'userSpaceOnUse').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', this.props.height).selectAll('stop').data([{ offset: '0%', color: '#4F9ED6', opacity: '1' }, { offset: '70%', color: '#4F9ED6', opacity: '1' }, { offset: '80%', color: '#4F9ED6', opacity: '0.5' }, { offset: '100%', color: '#4F9ED6', opacity: '0' }]).enter().append('stop').attr('offset', function (d) {
+        this.svg.append('linearGradient').attr('id', 'area-gradient').attr('gradientUnits', 'userSpaceOnUse').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', this.props.height).selectAll('stop').data([{ offset: '0%', color: '#DF3795', opacity: '1' }, { offset: '70%', color: '#DF3795', opacity: '1' }, { offset: '80%', color: '#DF3795', opacity: '0.5' }, { offset: '100%', color: '#DF3795', opacity: '0' }]).enter().append('stop').attr('offset', function (d) {
           return d.offset;
         }).attr('stop-color', function (d) {
           return d.color;
@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 WebFont.load({
   google: {
-    families: ['Dancing Script:n4,b7']
+    families: ['Lato:n4,b7']
   }
 });
 
@@ -505,6 +505,7 @@ module.exports = function () {
   });
 
   $('#wb-template-bar .template:eq(0)').click(function (e) {
+    $('body').scrollTop(0);
     builder.show();
     /*
     ReactDom.render(
@@ -1489,7 +1490,7 @@ module.exports = function () {
       });
     });
 
-    $elem.find('.ui.dropdown.time').dropdown();
+    $elem.find('.ui.dropdown').dropdown();
 
     $elem.find('input').focusin(function (e) {
       return highlightModule(e.currentTarget);
@@ -1612,6 +1613,24 @@ module.exports = function () {
   function highlightModule(elem) {
     $('.wb-module').removeClass('highlight');
     $(elem).parents('.wb-module').addClass('highlight');
+
+    if (isMobile()) {
+      _.delay(function () {
+        var to = $(elem).offset().top;
+        var $form = $(elem).parents('.ui.form'),
+            $field = $(elem).parents('.wb-field');
+
+        $body.scrollTop($form.position().top + $field.position().top);
+      }, 200);
+    }
+  }
+
+  function isMobile() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      return true;
+    }
+
+    return false;
   }
 
   function checkAction(elem, isChecked) {

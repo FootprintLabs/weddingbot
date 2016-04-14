@@ -8,7 +8,7 @@
 @import (multiple) '../semantic/theme.config';
 
 body, html {
-  background: linear-gradient(#B985B5,#D7B2D4) fixed;
+  background: radial-gradient(circle farthest-corner at right bottom,#FF8CCD 0,#E03997 28%,#A0276B 57%,#9C346E 100%) fixed;
 }
 
 #wb-login {
@@ -19,10 +19,18 @@ body, html {
   }
 }
 
-header {
-  border: 1px solid #88A65C;
-  background: linear-gradient(-45deg,#C0DB98,#85A955);
-  box-shadow: inset 0 -3px 10px #83A058;
+#wb-dashboard {
+  background: #FFFFFF;
+  box-shadow: 0 0 10px #444;
+  padding: 1em;
+  margin: 2em 0;
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    padding: 0.2em 1em;
+    margin: 1em 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }
 
 #wb-header {
@@ -49,6 +57,41 @@ header {
       .ellipsis.icon {
         margin-right: 0;
       }
+    }
+  }
+}
+
+#wb-stats {
+  border: none;
+  box-shadow: none;
+  flex-wrap: wrap;
+
+  .ui.segment {
+    width: 25%;
+  }
+
+  .label {
+    text-align: left;
+    text-transform: initial;
+  }
+
+  .value {
+    text-align: left;
+    font-size: 2em;
+
+    .icon {
+      font-size: 0.9em;
+    }
+  }
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    .ui.segment {
+      width: 50%;
+      border: none;
+    }
+
+    .button {
+      padding: 1em 0;
     }
   }
 }
@@ -89,7 +132,7 @@ header {
   }
 
   .template {
-    border: 1px solid #fff;
+    border: 1px dashed @pink;
     border-radius: 5px;
     height: 180px;
     margin-right: 1em;
@@ -105,20 +148,16 @@ header {
   .template .icon {
     width: 150px;
     height: 150px;
-    background: url(/images/sprite-blue.png);
+    background: url(/images/sprite-pink.png);
     background-size: 600px;
     margin: 0 auto;
     transition: all .2s ease-in-out;
   }
 
   .template .text {
-    color: @blue;
+    color: @pink;
     text-align: center;
     font-size: 1.1em;
-  }
-
-  .template:hover {
-    box-shadow: 0 0 10px #4E6D21;
   }
 
   .template:hover .icon {
@@ -163,14 +202,18 @@ header {
     & > div {
       width: 200px;
     }
+
+    .template .text {
+      font-size: 1em;
+    }
   }
 }
 
 #wb-user-bots {
 
   .ui.segment {
-    border: none;
     box-shadow: none;
+    border-color: @pink;
   }
 
   .stats {
@@ -215,7 +258,7 @@ header {
   .item > .image {
     width: 40px;
     height: 40px;
-    background: url(/images/sprite-blue.png);
+    background: url(/images/sprite-pink.png);
     background-size: 164px;
 
     &.about-you {
@@ -243,6 +286,23 @@ header {
     color: #767676;
     opacity: .7;
     font-size: 0.9em;
+  }
+}
+
+#wb-bot-community {
+  @media only screen and (max-width: @largestMobileScreen) {
+    .ui.header .button {
+      float: none;
+      margin-top: 1em;
+    }
+
+    .table-wrapper {
+      overflow-x: scroll;
+    }
+
+    .table {
+      width: 600px;
+    }
   }
 }
 

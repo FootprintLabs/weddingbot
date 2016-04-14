@@ -46,6 +46,7 @@ module.exports = () => {
   });
 
   $('#wb-template-bar .template:eq(0)').click(e => {
+    $('body').scrollTop(0);
     builder.show();
     /*
     ReactDom.render(
