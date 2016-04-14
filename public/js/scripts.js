@@ -457,6 +457,9 @@ module.exports = {
     type: 'message',
     label: 'The Intro',
     text: 'Hi, this is <first name of bride> and <first name of groom>.\n' + 'On <date of proposal>, <first name of groom> asked and <first name of bride> said "<response to wedding proposal>."\n' + 'So, we’re getting married and we’d love for you to be there!',
+    image: {
+      url: '/images/chris-ciara.png'
+    },
     fields: [{
       name: 'brideFirstName',
       label: 'First name of the bride',
@@ -535,6 +538,9 @@ module.exports = {
     type: 'message',
     label: 'Your Story',
     text: 'We met in <date couple met> while Chris was living in East Palo Alto and Ciara in San Francisco.\n' + 'OkCupid and a night out at The Saloon brought us together."',
+    image: {
+      url: '/images/chris-ciara-1.png'
+    },
     fields: [{
       name: 'youMetDate',
       label: 'Date you met',
@@ -909,6 +915,10 @@ var BotFormFieldImage = function (_React$Component) {
     _this.state = {
       loading: false
     };
+
+    if (_this.props.image) {
+      _this.state.image = _this.props.image;
+    }
     return _this;
   }
 
@@ -928,7 +938,7 @@ var BotFormFieldImage = function (_React$Component) {
           'a',
           { href: 'javascript:;', onClick: this.onClick.bind(this) },
           React.createElement('i', { className: 'ui retro camera icon' }),
-          this.props.label
+          this.state.image ? 'Edit Photo' : this.props.label
         ),
         React.createElement('input', { ref: 'file', type: 'file', onChange: this.onChange.bind(this) }),
         React.createElement('input', { ref: 'input', type: 'hidden', name: this.props.name, value: this.state.image })
@@ -1440,6 +1450,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var React = require('react'),
     BotFormFieldTag = require('../fields/tag'),
+    BotFormFieldImage = require('../fields/image'),
     BotFormModuleForm = require('./form');
 
 var BotFormModuleMessage = function (_React$Component) {
@@ -1474,6 +1485,11 @@ var BotFormModuleMessage = function (_React$Component) {
         }
       });
 
+      var image = this.props.module.image ? React.createElement(BotFormFieldImage, {
+        name: 'proposalPhoto',
+        label: 'Upload Proposal Photo',
+        image: this.props.module.image.url }) : null;
+
       var form = this.state.editable ? React.createElement(BotFormModuleForm, {
         module: this.props.module,
         updateProgress: this.props.updateProgress }) : null;
@@ -1505,7 +1521,11 @@ var BotFormModuleMessage = function (_React$Component) {
               form
             )
           ),
-          React.createElement('div', { className: 'five wide column' })
+          React.createElement(
+            'div',
+            { className: 'five wide column' },
+            image
+          )
         )
       );
     }
@@ -1552,7 +1572,7 @@ var BotFormModuleMessage = function (_React$Component) {
 
 module.exports = BotFormModuleMessage;
 
-},{"../fields/tag":11,"./form":15,"react":190}],17:[function(require,module,exports){
+},{"../fields/image":9,"../fields/tag":11,"./form":15,"react":190}],17:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1647,7 +1667,7 @@ var BotFormModuleResponse = function (_React$Component) {
         } else {
           return React.createElement(
             "span",
-            { className: "ui pink basic label" },
+            { key: i, className: "ui pink basic label" },
             part.text
           );
         }

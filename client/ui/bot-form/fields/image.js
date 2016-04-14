@@ -10,6 +10,10 @@ class BotFormFieldImage extends React.Component {
     this.state = {
       loading: false
     };
+
+    if (this.props.image) {
+      this.state.image = this.props.image;
+    }
   }
 
   render() {
@@ -25,7 +29,7 @@ class BotFormFieldImage extends React.Component {
         {image}
         <a href="javascript:;" onClick={this.onClick.bind(this)}>
           <i className="ui retro camera icon"></i>
-          {this.props.label}
+          {this.state.image ? 'Edit Photo' : this.props.label}
         </a>
         <input ref="file" type="file" onChange={this.onChange.bind(this)} />
         <input ref="input" type="hidden" name={this.props.name} value={this.state.image} />

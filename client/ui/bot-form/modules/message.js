@@ -1,5 +1,6 @@
 const React = require('react'),
       BotFormFieldTag = require('../fields/tag'),
+      BotFormFieldImage = require('../fields/image'),
       BotFormModuleForm = require('./form');
 
 class BotFormModuleMessage extends React.Component {
@@ -27,6 +28,12 @@ class BotFormModuleMessage extends React.Component {
       }
     });
 
+    const image = this.props.module.image ?
+      <BotFormFieldImage
+        name="proposalPhoto"
+        label="Upload Proposal Photo"
+        image={this.props.module.image.url} /> : null;
+
     const form = this.state.editable ?
       <BotFormModuleForm
         module={this.props.module}
@@ -46,6 +53,7 @@ class BotFormModuleMessage extends React.Component {
             </div>
           </div>
           <div className="five wide column">
+          {image}
           </div>
         </div>
       </div>

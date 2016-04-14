@@ -36,6 +36,9 @@ module.exports = {
       text: 'Hi, this is <first name of bride> and <first name of groom>.\n' +
         'On <date of proposal>, <first name of groom> asked and <first name of bride> said "<response to wedding proposal>."\n' +
         'So, we’re getting married and we’d love for you to be there!',
+      image: {
+        url: '/images/chris-ciara.png'
+      },
       fields: [
         {
           name: 'brideFirstName',
@@ -131,6 +134,9 @@ module.exports = {
       label: 'Your Story',
       text: 'We met in <date couple met> while Chris was living in East Palo Alto and Ciara in San Francisco.\n' +
         'OkCupid and a night out at The Saloon brought us together."',
+      image: {
+        url: '/images/chris-ciara-1.png'
+      },
       fields: [
         {
           name: 'youMetDate',

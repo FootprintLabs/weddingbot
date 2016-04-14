@@ -10,7 +10,7 @@ class BotFormModuleResponse extends React.Component {
       if (_.isString(part)) {
         return <span key={i} dangerouslySetInnerHTML={{__html: part}} />
       } else {
-        return <span className="ui pink basic label">{part.text}</span>
+        return <span key={i} className="ui pink basic label">{part.text}</span>
       }
     });
 
