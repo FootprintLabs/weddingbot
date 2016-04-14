@@ -11,7 +11,7 @@
           Variables
 *******************************/
 
-@botFormHeaderHeight: 71px;
+@botFormHeaderHeight: 89px;
 
 /*******************************
         Bot Builder
@@ -36,6 +36,14 @@
     top: 0;
     left: 0;
 
+    .column {
+      padding-bottom: 0 !important;
+    }
+
+    .list .header {
+      font-size: 1.3em;
+    }
+
     .ui.progress {
       margin-bottom: 0;
       height: 1.75em;
@@ -48,10 +56,18 @@
     .ui.progress .bar .progress {
       transition: right 0.5s, color 0.5s;
     }
+
+    .mobile {
+      display: none;
+    }
   }
 
   @media only screen and (max-width: @largestMobileScreen) {
     & > .header {
+
+      .list .header {
+        font-size: 1em;
+      }
 
       .column {
         padding-top: 0 !important;
@@ -63,7 +79,15 @@
       }
 
       .ui.segment {
-        padding-top: 0;
+        padding: 0 0 1.3em;
+      }
+
+      .non-mobile {
+        display: none;
+      }
+
+      .mobile {
+        display: block;
       }
     }
   }
@@ -183,4 +207,14 @@
     }
   }
 
+  .label {
+    color: #ccc;
+  }
+
+}
+
+#wb-bot-form .wb-module-delay {
+  .link {
+    float: right;
+  }
 }

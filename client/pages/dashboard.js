@@ -6,10 +6,10 @@ const $ = require('jquery'),
       Modal = require('semantic-ui-modal'),
       Timeseries = require('../charts/timeseries'),
       BotBuilder = require('../ui/botbuilder'),
-      BotForm = require('../ui/bot-form');
-      //React = require('react'),
-      //ReactDom = require('react-dom'),
-      //formWeddingInvite = require('../forms/wedding-invite');
+      BotForm = require('../ui/bot-form'),
+      React = require('react'),
+      ReactDom = require('react-dom'),
+      formWeddingInvite = require('../forms/wedding-invite');
 
 $.fn.dimmer = Dimmer;
 $.fn.dropdown = Dropdown;
@@ -45,14 +45,16 @@ module.exports = () => {
     $('#wb-modal-user').modal('show');
   });
 
-  $('#wb-template-bar .template:eq(0)').click(e => {
+  $('#wb-template-bar .template').click(e => {
     $('body').scrollTop(0);
-    builder.show();
-    /*
-    ReactDom.render(
-      <BotForm form={formWeddingInvite} />,
-      document.getElementById('wb-bot-form-container')
-    );
-    */
+
+    if ($(e.currentTarget).hasClass('about-you')) {
+      builder.show();
+    } else if ($(e.currentTarget).hasClass('wedding-invite')) {
+      ReactDom.render(
+        <BotForm form={formWeddingInvite} />,
+        document.getElementById('wb-bot-form-container')
+      );
+    }
   });
 };

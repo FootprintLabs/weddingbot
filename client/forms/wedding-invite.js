@@ -66,6 +66,80 @@ module.exports = {
           value: 'Yes'
         }
       ]
-    }
+    },
+    {
+      name: 'delay1',
+      type: 'delay',
+      value: 15,
+      fields: []
+    },
+    {
+      name: 'redo',
+      type: 'message',
+      label: 'Introduction the Redo',
+      text: 'We’re going to ask you a series of questions next.\n' +
+        'To re-type any response, just text message the word “redo”.',
+      fields: []
+    },
+    {
+      name: 'delay2',
+      type: 'delay',
+      value: 5,
+      fields: []
+    },
+    {
+      name: 'question1',
+      type: 'question',
+      label: 'Acquiring the name',
+      text: 'First question, what’s your first and your last name?',
+      fields: []
+    },
+    {
+      name: 'delay3',
+      type: 'delay',
+      value: 3,
+      fields: []
+    },
+    {
+      name: 'response1',
+      type: 'response',
+      text: 'Record <USER RESPONSE 1> to <QUESTION 1>',
+      fields: []
+    },
+    {
+      name: 'delay4',
+      type: 'delay',
+      value: 3,
+      fields: []
+    },
+    {
+      name: 'message2',
+      type: 'message',
+      label: 'After USER RESPONSE 1 to MESSAGE 2',
+      text: 'Got it!',
+      fields: []
+    },
+    {
+      name: 'delay5',
+      type: 'delay',
+      value: 3,
+      fields: []
+    },
+    {
+      name: 'message3',
+      type: 'message',
+      label: 'Your Story',
+      text: 'We met in <date couple met> while Chris was living in East Palo Alto and Ciara in San Francisco.\n' +
+        'OkCupid and a night out at The Saloon brought us together."',
+      fields: [
+        {
+          name: 'youMetDate',
+          label: 'Date you met',
+          pattern: 'date couple met',
+          type: 'string',
+          value: '23 April, 2019'
+        },
+      ]
+    },
   ]
 };
