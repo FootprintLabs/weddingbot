@@ -1,5 +1,6 @@
 const $ = require('jquery'),
       d3 = require('d3'),
+      utils = require('../utils'),
       Dimmer = require('semantic-ui-dimmer'),
       Dropdown = require('semantic-ui-dropdown'),
       Transition = require('semantic-ui-transition'),
@@ -44,13 +45,84 @@ module.exports = () => {
   $('#add-user').click(e => {
     $('#wb-modal-user').modal('show');
   });
+  $('#wb-modal-user .dropdown').dropdown();
+
+  $('#wb-user-bots .stats .more').click(e => {
+    const $grid = $(e.currentTarget)
+                      .parents('.stats')
+                      .find('.ui.two.column.grid');
+
+    if ($grid.find('.column.hidden').length) {
+      $grid.find('.column.hidden')
+        .removeClass('hidden')
+        .addClass('showing');
+
+      $(e.currentTarget).html(
+        '<span>Less</span>' +
+        '<i class="caret up icon"></i>'
+      );
+
+    } else {
+      $grid.find('.column.showing')
+        .addClass('hidden')
+        .removeClass('showing');
+
+      $(e.currentTarget).html(
+        '<span>More</span>' +
+        '<i class="dropdown icon"></i>'
+      );
+    }
+  });
+
+  let guestCount = 1;
+  $('#add-guest').click(e => {
+    guestCount++;
+    const content = '<div class="fields">' +
+        '<div class="eleven wide field">' +
+        ' <input type="text" placeholder="Guest ' + guestCount + '" />' +
+        '</div>' +
+      '</div>';
+
+    $(e.currentTarget).parents('.fields').parent().append(content);
+  });
+
+  if (utils.isMobile()) {
+    $('#wb-template-bar').scroll(e => {
+      const elem = e.currentTarget;
+      console.log(elem.scrollLeft);
+    });
+  }
+
+  var builderShown = false;
+  var botFormShown = false;
+  var hash = window.location.hash;
+  setInterval(function(){
+    if (window.location.hash !== hash && hash === '#form') {
+      if (builderShown) {
+        builder.hide();
+        builderShown = false;
+      }
+
+      if (botFormShown) {
+        botFormShown = false;
+        $('#wb-bot-form-container').html('');
+        $('body').css('overflow', 'auto');
+      }
+    }
+
+    hash = window.location.hash;
+  }, 100);
 
   $('#wb-template-bar .template').click(e => {
     $('body').scrollTop(0);
 
+    window.location.hash = "#form";
+
     if ($(e.currentTarget).hasClass('about-you')) {
+      builderShown = true;
       builder.show();
     } else if ($(e.currentTarget).hasClass('wedding-invite')) {
+      botFormShown = true;
       ReactDom.render(
         <BotForm form={formWeddingInvite} />,
         document.getElementById('wb-bot-form-container')

@@ -1,5 +1,6 @@
 const $ = require('jquery'),
       _ = require('lodash'),
+      utils = require('../utils'),
       moment = require('moment'),
       Transition = require('semantic-ui-transition'),
       Checkbox = require('semantic-ui-checkbox'),
@@ -231,7 +232,7 @@ module.exports = function() {
     $('.wb-module').removeClass('highlight');
     $(elem).parents('.wb-module').addClass('highlight');
 
-    if (isMobile()) {
+    if (utils.isMobile()) {
       _.delay(() => {
         let to = $(elem).offset().top;
         const $form = $(elem).parents('.ui.form'),
@@ -240,14 +241,6 @@ module.exports = function() {
         $body.scrollTop($form.position().top + $field.position().top);
       }, 200);
     }
-  }
-
-  function isMobile() {
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      return true;
-    }
-
-    return false;
   }
 
   function checkAction(elem, isChecked) {
@@ -296,6 +289,7 @@ module.exports = function() {
   }
 
   return {
-    show: show
+    show: show,
+    hide: hide
   }
 };

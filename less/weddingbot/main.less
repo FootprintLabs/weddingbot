@@ -216,25 +216,39 @@ body, html {
     border-color: @pink;
   }
 
-  .stats {
-    position: relative;
-    min-height: 300px;
-  }
-
   .ui.ribbon.label {
     padding-left: 1em;
   }
 
-  .ui.statistics {
-    justify-content: space-around;
-    font-size: 0.9em;
+  .stats {
+    position: relative;
+    min-height: 388px;
 
-    & > .statistic {
-      margin-bottom: 0;
+    .ui.column.grid > .column {
+      padding-right: 0;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
     }
 
-    & > .statistic > .value {
-      font-size: 2.5em;
+    .ui.column.grid > .column.hidden {
+      display: none;
+    }
+
+    .value {
+      font-size: 2em;
+      text-align: left;
+    }
+
+    .label {
+      text-align: left;
+      font-weight: normal;
+      text-transform: initial;
+      font-size: 0.85em;
+    }
+
+    .more:hover {
+      color: @pink;
+      cursor: pointer;
     }
   }
 
@@ -290,7 +304,13 @@ body, html {
 }
 
 #wb-bot-community {
+  .chevron.icon {
+    display:none;
+  }
+
   @media only screen and (max-width: @largestMobileScreen) {
+    position: relative;
+
     .ui.header .button {
       float: none;
       margin-top: 1em;
@@ -302,6 +322,22 @@ body, html {
 
     .table {
       width: 600px;
+    }
+
+    .chevron.icon {
+      display:block;
+      position: absolute;
+      font-size: 2em;
+      top: 58%;
+      opacity: 0.7;
+    }
+
+    .chevron.icon.left {
+      left: -19px;
+    }
+
+    .chevron.icon.right {
+      right: -22px;
     }
   }
 }

@@ -97,6 +97,7 @@ block content
 
     div#wb-user-bots.ui.basic.segment
       h1.ui.header Recent Bots
+
       div.ui.three.column.stackable.grid
         div.column
           div.ui.segment
@@ -111,19 +112,35 @@ block content
                   div.description Last edited on March 20, 2016
             div.ui.divider
             div.stats.none
+              div.ui.two.column.grid
+                div.column
+                  div.ui.pink.statistic
+                    div.value
+                      i.send.icon
+                      |  0
+                    div.label SMS Invites sent
+                div.column
+                  div.ui.pink.statistic
+                    div.value
+                      i.wait.icon
+                      |  0
+                    div.label SMS Responses needed
+                div.column
+                  div.ui.olive.statistic
+                    div.value
+                      i.mail.outline.icon
+                      |  0
+                    div.label Offline Invites sent
+                div.column
+                  div.ui.olive.statistic
+                    div.value
+                      i.wait.icon
+                      |  0
+                    div.label Offline Responses needed
+              div.ui.divider
               h4.ui.header.aligned.center Cumulative Responses
               div
                 img(src="/images/blank-chart.png", style="width:100%;")
-              div.ui.mini.statistics
-                div.statistic.orange
-                  div.value --
-                  div.label People
-                div.statistic.green
-                  div.value --
-                  div.label Responses
-                div.statistic.olive
-                  div.value --
-                  div.label SMS Used
               div.ui.inverted.dimmer
                 div.content
                   div.center
@@ -144,18 +161,68 @@ block content
                   div.description Published on March 11, 2016
             div.ui.divider
             div.stats
+              div.ui.two.column.grid
+                div.column
+                  div.ui.pink.statistic
+                    div.value
+                      i.send.icon
+                      |  53
+                    div.label SMS Invites sent
+                div.column
+                  div.ui.pink.statistic
+                    div.value
+                      i.wait.icon
+                      |  83
+                    div.label SMS Responses needed
+                div.column
+                  div.ui.olive.statistic
+                    div.value
+                      i.mail.outline.icon
+                      |  53
+                    div.label Offline Invites sent
+                div.column
+                  div.ui.olive.statistic
+                    div.value
+                      i.wait.icon
+                      |  83
+                    div.label Offline Responses needed
+                div.column.hidden
+                  div.ui.green.statistic
+                    div.value
+                      i.comment.outline.icon
+                      |  53
+                    div.label
+                      strong 'Yes'
+                      |  RSVPs
+                div.column.hidden
+                  div.ui.red.statistic
+                    div.value
+                      i.comment.outline.icon
+                      |  83
+                    div.label
+                      strong 'No'
+                      |  RSVPs
+                div.column.hidden
+                  div.ui.brown.statistic
+                    div.value
+                      i.comment.outline.icon
+                      |  53
+                    div.label
+                      strong 'Maybe'
+                      |  RSVPs
+                div.column.hidden
+                  div.ui.orange.statistic
+                    div.value
+                      i.comment.outline.icon
+                      |  83
+                    div.label
+                      strong 'No'
+                      |  RSVPs to Reception
+              h4.ui.horizontal.divider.more
+                span More
+                i.dropdown.icon
               h4.ui.header.aligned.center Cumulative Responses
               div.wb-chart
-              div.ui.mini.statistics
-                div.statistic.orange
-                  div.value 120
-                  div.label People
-                div.statistic.green
-                  div.value 52
-                  div.label Responses
-                div.statistic.olive
-                  div.value 72
-                  div.label SMS Used
 
         div.column
           div.ui.segment
@@ -170,19 +237,35 @@ block content
                   div.description Scheduled on April 1, 2016
             div.ui.divider
             div.stats.none
+              div.ui.two.column.grid
+                div.column
+                  div.ui.pink.statistic
+                    div.value
+                      i.send.icon
+                      |  0
+                    div.label SMS Invites sent
+                div.column
+                  div.ui.pink.statistic
+                    div.value
+                      i.wait.icon
+                      |  0
+                    div.label SMS Responses needed
+                div.column
+                  div.ui.olive.statistic
+                    div.value
+                      i.mail.outline.icon
+                      |  0
+                    div.label Offline Invites sent
+                div.column
+                  div.ui.olive.statistic
+                    div.value
+                      i.wait.icon
+                      |  0
+                    div.label Offline Responses needed
+              div.ui.divider
               h4.ui.header.aligned.center Cumulative Responses
               div
                 img(src="/images/blank-chart.png", style="width:100%;")
-              div.ui.mini.statistics
-                div.statistic.orange
-                  div.value --
-                  div.label People
-                div.statistic.green
-                  div.value --
-                  div.label Responses
-                div.statistic.olive
-                  div.value --
-                  div.label SMS Used
               div.ui.inverted.dimmer
                 div.content
                   div.center
@@ -197,6 +280,8 @@ block content
         button#add-user.ui.right.floated.pink.button
           i.icon.user
           | Add User
+      i.ui.chevron.pink.left.icon
+      i.ui.chevron.pink.right.icon
       div.table-wrapper
         table.ui.basic.unstackable.table
           thead
@@ -261,27 +346,6 @@ block content
       div.body
         div.ui.container
 
-    div#wb-modal-user.ui.small.modal
-      i.close.icon
-      div.header Add a new user
-      div.content
-        form.ui.form
-          div.two.fields
-            div.field
-              label First Name
-              input(type="text", name="name", placeholder="")
-            div.field
-              label Last Name
-              input(type="text", name="name", placeholder="")
-          div.field
-            label Phone Number
-            input(type="text", name="email", placeholder="(xxx) xxx-xxxx")
-          div.field
-            label Email Address
-            input(type="text", name="phone", placeholder="")
-      div.actions
-        div.ui.button.pink.ok Add User
-        div.ui.button.cacel Cancel
-
+    include ./modals/add-user.jade
 
     div#wb-bot-form-container
