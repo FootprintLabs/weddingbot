@@ -15,10 +15,26 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Your Middle Name'
+        },
+        {
           name: 'lastName',
           label: 'Your Last Name',
           required: true,
           type: 'string'
+        },
+        {
+          name: 'gender',
+          label: 'Your Gender',
+          type: 'radio',
+          values: [
+            { label: 'Male', value: "male" },
+            { label: 'Female', value: "female" },
+            { label: 'Other', value: "other", showInput: true },
+          ]
         },
         {
           name: 'photo',
@@ -37,10 +53,26 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Their Middle Name'
+        },
+        {
           name: 'lastName',
           label: 'Their Last Name',
           required: true,
           type: 'string'
+        },
+        {
+          name: 'gender',
+          label: 'Their Gender',
+          type: 'radio',
+          values: [
+            { label: 'Male', value: "male" },
+            { label: 'Female', value: "female" },
+            { label: 'Other', value: "other", showInput: true },
+          ]
         },
         {
           name: 'photo',
@@ -233,6 +265,12 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'motherMiddleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
+        },
+        {
           name: 'motherlastName',
           label: 'Last Name of the Mother of the Bride',
           type: 'string'
@@ -246,6 +284,12 @@ module.exports = {
           name: 'fatherFirstName',
           label: 'First Name of the Father of the Bride',
           type: 'string'
+        },
+        {
+          name: 'fatherMiddleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
         },
         {
           name: 'fatherLastName',
@@ -280,6 +324,12 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
+        },
+        {
           name: 'lastName',
           label: 'Last Name of the Mother of the Bride',
           type: 'string'
@@ -302,6 +352,12 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
+        },
+        {
           name: 'lastName',
           label: 'Last Name of the Father of the Bride',
           type: 'string'
@@ -322,6 +378,12 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
+        },
+        {
           name: 'motherLastName',
           label: 'Last Name of the Mother of the Groom',
           type: 'string'
@@ -335,6 +397,12 @@ module.exports = {
           name: 'fatherFirstName',
           label: 'First Name of the Father of the Groom',
           type: 'string'
+        },
+        {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
         },
         {
           name: 'fatherLastName',
@@ -369,6 +437,12 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
+        },
+        {
           name: 'lastName',
           label: 'Last Name of the Mother of the Groom',
           type: 'string'
@@ -391,6 +465,12 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
+        },
+        {
           name: 'lastName',
           label: 'Last Name of the Father of the Groom',
           type: 'string'
@@ -409,6 +489,12 @@ module.exports = {
           name: 'firstName',
           label: 'First Name of the Maid of Honor',
           type: 'string'
+        },
+        {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
         },
         {
           name: 'lastName',
@@ -438,6 +524,12 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
+        },
+        {
           name: 'lastName',
           label: 'Last Name of the Maid of Honor',
           type: 'string'
@@ -461,6 +553,12 @@ module.exports = {
           name: 'firstName',
           label: 'First Name of the Best Man',
           type: 'string'
+        },
+        {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
         },
         {
           name: 'lastName',
@@ -488,6 +586,12 @@ module.exports = {
           name: 'firstName',
           label: 'First Name of the Best Man',
           type: 'string'
+        },
+        {
+          name: 'middleName',
+          label: false,
+          type: 'string',
+          enableCheck: 'Add Middle Name'
         },
         {
           name: 'lastName',
@@ -524,6 +628,23 @@ module.exports = {
       ]
     },
     {
+      name: 'groomsmen',
+      fields: [
+        {
+          name: 'option',
+          label: 'Will you have Groomsmen?',
+          type: 'boolean',
+          toggle: 'bridesmaid.howMany',
+        },
+        {
+          name: 'howMany',
+          hidden: true,
+          label: 'How many Groomsmen will you have?',
+          type: 'number'
+        }
+      ]
+    },
+    {
       name: 'flowergirl',
       fields: [
         {
@@ -539,7 +660,24 @@ module.exports = {
           type: 'number'
         }
       ]
-    }
+    },
+    {
+      name: 'ringbearer',
+      fields: [
+        {
+          name: 'option',
+          label: 'Will you have Ring Bearer?',
+          type: 'boolean',
+          toggle: 'bridesmaid.howMany',
+        },
+        {
+          name: 'howMany',
+          hidden: true,
+          label: 'How many Ring Bearers will you have?',
+          type: 'number'
+        }
+      ]
+    },
   ]
 };
 

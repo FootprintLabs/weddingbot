@@ -24,23 +24,47 @@ div.ui.segment
               div.ten.wide.field
 
                 if field.type === 'string'
-                  label= field.label
-                  if field.required
-                    div.ui.corner.labeled.input
-                      input(name=fieldName, type="text", placeholder="Your Answer")
-                      div.ui.corner.label
-                        i.asterisk.icon
-                  else
-                    input(name=fieldName, type="text", placeholder="Your Answer")
+                  div(style=field.hidden ? 'display:none;' : '')
+                    if field.label
+                      label= field.label
+                    if field.required
+                      div.ui.corner.labeled.input
+                        input(name=fieldName, type="text", placeholder="Your Answer")
+                        div.ui.corner.label
+                          i.asterisk.icon
+                    else
+                      input(name=fieldName, type="text", placeholder="Your Answer", style=field.enableCheck ? 'display:none;' : '')
 
-                  if field.disableCheck
-                    div.ui.checkbox
-                      input(type="checkbox", data-action="disable", data-input=fieldName)
-                      label= field.disableCheck
+                    if field.disableCheck
+                      div.ui.checkbox
+                        input(type="checkbox", data-action="disable", data-input=fieldName)
+                        label= field.disableCheck
+
+                    if field.enableCheck
+                      div.ui.checkbox
+                        input(type="checkbox", data-action="enable", data-input=fieldName)
+                        label= field.enableCheck
+
+                  if field.hidden
+                    div.ui.radio.checkbox
+                      input(type="radio", name='', value='', data-action=radio.showInput ? 'show-input' : 'hide-input', checked="")
+                      label=field.showLabel
 
                 else if field.type === 'number'
                   label= field.label
                   input(name=fieldName, type="number", placeholder="Your Answer")
+
+                if field.type === 'radio'
+                  div.inline.fields
+                    label=field.label
+                    each radio in field.values
+                      div.field
+                        div.ui.radio.checkbox
+                          input(type="radio", name=field.name, value=radio.value, data-action=radio.showInput ? 'show-input' : 'hide-input', checked="")
+                          label=radio.label
+                      if radio.showInput
+                        div.field.checkInput(style="display:none;")
+                          input(type="text", placeholder="Write in")
 
                 else if field.type === 'image'
                   a.upload-image(href="javascript:;")

@@ -257,6 +257,14 @@ module.exports = function() {
         _.delay(() => $input.focus(), 100);
         $progress.progress('decrement');
       }
+    } else if (data.action === 'enable') {
+      const $input = $body.find('input[name="' + data.input + '"]');
+      if (isChecked) {
+        $input.show();
+        _.delay(() => $input.focus(), 100);
+      } else {
+        $input.hide();
+      }
     } else if (data.action === 'same') {
       const $input = $body.find('input[name="' + data.input + '"]'),
             $target = $body.find('input[name="' + data.target + '"]');
@@ -274,6 +282,22 @@ module.exports = function() {
         $progress.progress('increment');
       } else {
         $progress.progress('decrement');
+      }
+    } else if (data.action === 'hide-input') {
+      if (isChecked) {
+        $(elem)
+          .parents('.ten.wide.field')
+          .find('.field.checkInput')
+          .hide();
+      }
+    } else if (data.action === 'show-input') {
+      if (isChecked) {
+        const $input = $(elem)
+          .parents('.ten.wide.field')
+          .find('.field.checkInput');
+        $input.show();
+        $input.find('input').val('');
+        _.delay(() => $input.find('input').focus(), 100);
       }
     } else if (data.action === 'toggle') {
       const val = _.toInteger($(elem).val()),

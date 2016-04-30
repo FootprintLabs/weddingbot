@@ -2101,6 +2101,18 @@ module.exports = function () {
           $progress.progress('decrement');
         }
       })();
+    } else if (data.action === 'enable') {
+      (function () {
+        var $input = $body.find('input[name="' + data.input + '"]');
+        if (isChecked) {
+          $input.show();
+          _.delay(function () {
+            return $input.focus();
+          }, 100);
+        } else {
+          $input.hide();
+        }
+      })();
     } else if (data.action === 'same') {
       (function () {
         var $input = $body.find('input[name="' + data.input + '"]'),
@@ -2122,6 +2134,21 @@ module.exports = function () {
         $progress.progress('increment');
       } else {
         $progress.progress('decrement');
+      }
+    } else if (data.action === 'hide-input') {
+      if (isChecked) {
+        $(elem).parents('.ten.wide.field').find('.field.checkInput').hide();
+      }
+    } else if (data.action === 'show-input') {
+      if (isChecked) {
+        (function () {
+          var $input = $(elem).parents('.ten.wide.field').find('.field.checkInput');
+          $input.show();
+          $input.find('input').val('');
+          _.delay(function () {
+            return $input.find('input').focus();
+          }, 100);
+        })();
       }
     } else if (data.action === 'toggle') {
       (function () {

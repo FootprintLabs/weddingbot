@@ -10,16 +10,23 @@ div#wb-modal-user.ui.small.modal
         div.field
           label Last Name
           input(type="text", name="name", placeholder="") 
+      div.three.fields
+        div.field
+          label Your Relationship
+          input(type="text", name="name", placeholder="") 
+        div.field
+          label % Likely to attend
+          input(type="text", name="name", placeholder="") 
+        div.field
+          label Estimated # of +1s
+          input(type="text", name="name", placeholder="") 
       div.two.fields
         div.field
           label Phone Number
           input(type="text", name="email", placeholder="(xxx) xxx-xxxx") 
         div.field
-          label Other Phone
-          input(type="text", name="email", placeholder="(xxx) xxx-xxxx") 
-      div.field
-        label Email Address
-        input(type="text", name="phone", placeholder="") 
+          label Email Address
+          input(type="text", name="phone", placeholder="") 
       div.two.fields
         div.field
           label Mailing Address 1
@@ -335,6 +342,9 @@ div#wb-modal-user.ui.small.modal
               div.item(data-value="ye") Yemen
               div.item(data-value="zm") Zambia
               div.item(data-value="zw") Zimbabwe
+      div.field
+        label Other Information
+        textarea( name="name", placeholder="") 
       h4.ui.dividing.header Guests
       div.fields
         div.eleven.wide.field
