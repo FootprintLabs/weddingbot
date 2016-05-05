@@ -224,14 +224,27 @@ body, html {
     position: relative;
     min-height: 388px;
 
-    .ui.column.grid > .column {
-      padding-right: 0;
-      padding-top: 0.5em;
-      padding-bottom: 0.5em;
+    .table td {
+      padding: .5em;
+      font-size: 0.88em;
     }
 
-    .ui.column.grid > .column.hidden {
-      display: none;
+    .table td.num {
+      color: @pink;
+      font-size: 1.8em;
+      padding: 0.5em 0;
+    }
+
+    .table td.num.red {
+      color: @red;
+    }
+
+    .table td.num.green {
+      color: @green;
+    }
+
+    .table td.num.teal {
+      color: @teal;
     }
 
     .value {
