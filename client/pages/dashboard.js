@@ -7,6 +7,7 @@ const $ = require('jquery'),
       Modal = require('semantic-ui-modal'),
       Timeseries = require('../charts/timeseries'),
       BotBuilder = require('../ui/botbuilder'),
+      Community = require('../ui/community'),
       BotForm = require('../ui/bot-form'),
       React = require('react'),
       ReactDom = require('react-dom'),
@@ -129,4 +130,9 @@ module.exports = () => {
       );
     }
   });
+
+  ReactDom.render(
+    <Community />,
+    document.getElementById('wb-community-container')
+  );
 };

@@ -303,9 +303,14 @@ body, html {
   }
 }
 
-#wb-bot-community {
-  .chevron.icon {
-    display:none;
+#wb-community {
+
+  .user {
+
+    .sub-title {
+      margin: 0.5em 0;
+    }
+
   }
 
   @media only screen and (max-width: @largestMobileScreen) {
@@ -314,30 +319,6 @@ body, html {
     .ui.header .button {
       float: none;
       margin-top: 1em;
-    }
-
-    .table-wrapper {
-      overflow-x: scroll;
-    }
-
-    .table {
-      width: 600px;
-    }
-
-    .chevron.icon {
-      display:block;
-      position: absolute;
-      font-size: 2em;
-      top: 58%;
-      opacity: 0.7;
-    }
-
-    .chevron.icon.left {
-      left: -19px;
-    }
-
-    .chevron.icon.right {
-      right: -22px;
     }
   }
 }
