@@ -6,49 +6,35 @@ div.ui.segment
 
   div.ui.large.form
     each module in modules
-      div.wb-module(data-module=module.name)
-
-        if module.link
-          a.wb-module-show-link(href="javascript:;")
-            i.icon.add.circle
-            =module.link
+      div.wb-module(
+        data-module=module.name,
+        class=module.hidden ? 'hidden' : '')
 
         each field in module.fields
           - var fieldName = module.name + '.' + field.name
 
           div.wb-field(
             data-name=fieldName,
-            class=module.hidden || field.hidden ? 'hidden' : '')
+            class=field.hidden ? 'hidden' : '')
 
             div.fields
               div.ten.wide.field
 
                 if field.type === 'string'
-                  div(style=field.hidden ? 'display:none;' : '')
-                    if field.label
-                      label= field.label
-                    if field.required
-                      div.ui.corner.labeled.input
-                        input(name=fieldName, type="text", placeholder="Your Answer")
-                        div.ui.corner.label
-                          i.asterisk.icon
-                    else
-                      input(name=fieldName, type="text", placeholder="Your Answer", style=field.enableCheck ? 'display:none;' : '')
+                  if field.label
+                    label= field.label
+                  if field.required
+                    div.ui.corner.labeled.input
+                      input(name=fieldName, type="text", placeholder="Your Answer")
+                      div.ui.corner.label
+                        i.asterisk.icon
+                  else
+                    input(name=fieldName, type="text", placeholder="Your Answer", style=field.enableCheck ? 'display:none;' : '')
 
-                    if field.disableCheck
-                      div.ui.checkbox
-                        input(type="checkbox", data-action="disable", data-input=fieldName)
-                        label= field.disableCheck
-
-                    if field.enableCheck
-                      div.ui.checkbox
-                        input(type="checkbox", data-action="enable", data-input=fieldName)
-                        label= field.enableCheck
-
-                  if field.hidden
-                    div.ui.radio.checkbox
-                      input(type="radio", name='', value='', data-action=radio.showInput ? 'show-input' : 'hide-input', checked="")
-                      label=field.showLabel
+                  if field.disableCheck
+                    div.ui.checkbox
+                      input(type="checkbox", data-action="disable", data-input=fieldName)
+                      label= field.disableCheck
 
                 else if field.type === 'number'
                   label= field.label
@@ -60,7 +46,7 @@ div.ui.segment
                     each radio in field.values
                       div.field
                         div.ui.radio.checkbox
-                          input(type="radio", name=field.name, value=radio.value, data-action=radio.showInput ? 'show-input' : 'hide-input', checked="")
+                          input(type="radio", name=fieldName, value=radio.value, data-action=radio.showInput ? 'show-input' : 'hide-input')
                           label=radio.label
                       if radio.showInput
                         div.field.checkInput(style="display:none;")
@@ -104,6 +90,11 @@ div.ui.segment
                         div.default.text Choose
                         div.menu
 
+                else if field.type === 'toggle'
+                  div.ui.checkbox
+                    input(type="checkbox", name=fieldName, value="1", data-action="toggle", data-target=field.toggle)
+                    label=field.label
+
                 else if field.type === 'boolean'
                   div.grouped.fields
                     label= field.label
@@ -116,16 +107,21 @@ div.ui.segment
                         input(type="radio", name=fieldName, value="0", data-action="toggle", data-target=field.toggle)
                         label No
 
-              if field.sideCheck
-                - var check = field.sideCheck
-                div.six.wide.field
-                  label!='&nbsp;'
-                  div.ui.checkbox
-                    input(
-                      type="checkbox",
-                      data-action=check.action,
-                      data-input=fieldName,
-                      data-target=check.target
-                    )
-                    label= check.label
+                else if field.type === 'link'
+                  a.wb-link(href="javascript:;", data-action=field.action, data-target=field.target)
+                    i(class='icon ' + field.icon)
+                    =field.label
 
+              if field.sideChecks
+                div.six.wide.field
+                  div.grouped.fields
+                    each check in field.sideChecks
+                      div.field
+                        div.ui.checkbox
+                          input(
+                            type="checkbox",
+                            data-action=check.action,
+                            data-input=fieldName,
+                            data-target=check.target
+                          )
+                          label= check.label

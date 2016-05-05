@@ -1910,27 +1910,27 @@ module.exports = function () {
   function bindEvents() {
     $elem.find('.save-form, .cancel-form').click(hide);
 
-    $elem.find('.datepicker').each(function (i, elem) {
+    bindFormEvents($body);
+    initProgress();
+  }
+
+  function bindFormEvents($form) {
+    $form.find('.datepicker').each(function (i, elem) {
       new Pikaday({
         field: elem,
         format: 'MMMM Do YYYY',
         container: $body.children('.ui.container')[0],
         onOpen: function onOpen() {
-
-          var top = $body.scrollTop() + $(elem).offset().top - ($body.outerHeight(true) - $body.height());
-
-          var left = $(elem).offset().left - $body.children('.ui.container').offset().left;
-
           $(this.el).css({
             position: 'absolute',
-            top: top,
-            left: left
+            top: $body.scrollTop() + $(elem).offset().top - ($body.outerHeight(true) - $body.height()),
+            left: $(elem).offset().left - $body.children('.ui.container').offset().left
           });
         }
       });
     });
 
-    $elem.find('.ui.checkbox').checkbox({
+    $form.find('.ui.checkbox').checkbox({
       onChecked: function onChecked() {
         checkAction(this, true);
       },
@@ -1939,7 +1939,7 @@ module.exports = function () {
       }
     });
 
-    $elem.find('.ui.dropdown.time').each(function (i, elem) {
+    $form.find('.ui.dropdown.time').each(function (i, elem) {
       _.each(_.range(1, 24), function (item) {
         var time = item - 12 < 1 ? item + ':00 AM' : item - 12 + ':00 PM';
         var content = '<div class="item" data-value="' + time + '">' + time + '</div>';
@@ -1948,26 +1948,27 @@ module.exports = function () {
       });
     });
 
-    $elem.find('.ui.dropdown').dropdown();
+    $form.find('.ui.dropdown').dropdown();
 
-    $elem.find('input').focusin(function (e) {
+    $form.find('input').focusin(function (e) {
       return highlightModule(e.currentTarget);
     });
 
-    $elem.find('.wb-module-show-link').click(function (e) {
-      $(e.currentTarget).nextAll('.wb-field.hidden').removeClass('hidden');
+    $form.find('.wb-link').click(function (e) {
+      var data = $(e.currentTarget).data();
 
-      var $firstInput = $(e.currentTarget).next('.wb-field').find('input[type="text"]:eq(0)');
+      var $target = void 0;
+      if (data.action === 'show') {
+        $target = $body.find('.wb-module[data-module="' + data.target + '"]');
+        $target.removeClass('hidden');
+      }
 
       _.delay(function () {
-        return $firstInput.focus();
+        return $target.find('input[type="text"]:eq(0)').focus();
       }, 100);
-
-      $(e.currentTarget).remove();
     });
 
-    initProgress();
-    uploadImage();
+    uploadImage($form);
   }
 
   function initProgress() {
@@ -2008,7 +2009,7 @@ module.exports = function () {
     });
   }
 
-  function uploadImage() {
+  function uploadImage($form) {
     var $currentField = void 0,
         lastPercent = 0;
 
@@ -2022,11 +2023,11 @@ module.exports = function () {
       }
     };
 
-    $elem.find('.upload-image').click(function (e) {
+    $form.find('.upload-image').click(function (e) {
       $(e.currentTarget).next('input[type="file"]').trigger('click');
     });
 
-    $elem.find('input[type="file"]').change(function (e) {
+    $form.find('input[type="file"]').change(function (e) {
       var formData = new FormData();
       formData.append('file', e.currentTarget.files[0]);
 
@@ -2152,16 +2153,22 @@ module.exports = function () {
       }
     } else if (data.action === 'toggle') {
       (function () {
-        var val = _.toInteger($(elem).val()),
-            $field = $body.find('.wb-field[data-name="' + data.target + '"]');
+        var val = _.toInteger($(elem).val());
 
-        if (val) {
-          $field.removeClass('hidden');
+        var $target = void 0;
+        if (data.target.search(/\./g) > 0) {
+          $target = $body.find('.wb-field[data-name="' + data.target + '"]');
+        } else {
+          $target = $body.find('.wb-module[data-module="' + data.target + '"]');
+        }
+
+        if (val && isChecked) {
+          $target.removeClass('hidden');
           _.delay(function () {
-            return $field.find('input:eq(0)').focus();
+            return $target.find('input:eq(0)').focus();
           }, 100);
         } else {
-          $field.addClass('hidden');
+          $target.addClass('hidden');
         }
       })();
     }

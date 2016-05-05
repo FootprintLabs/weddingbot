@@ -15,10 +15,16 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleNameToggle',
+          label: 'Your Middle Name',
+          type: 'toggle',
+          toggle: 'your.middleName'
+        },
+        {
           name: 'middleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Your Middle Name'
+          type: 'string'
         },
         {
           name: 'lastName',
@@ -53,10 +59,16 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleNameToggle',
+          label: 'Their Middle Name',
+          type: 'toggle',
+          toggle: 'their.middleName'
+        },
+        {
           name: 'middleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Their Middle Name'
+          type: 'string'
         },
         {
           name: 'lastName',
@@ -88,21 +100,21 @@ module.exports = {
           name: 'firstName',
           label: 'Your First Name after Marriage',
           type: 'string',
-          sideCheck: {
+          sideChecks: [{
             action: 'same',
             label: 'Same as before',
             target: 'your.firstName'
-          }
+          }]
         },
         {
           name: 'lastName',
           label: 'Your Last Name after Marriage',
           type: 'string',
-          sideCheck: {
+          sideChecks: [{
             action: 'same',
             label: 'Same as before',
             target: 'your.lastName'
-          }
+          }]
         }
       ]
     },
@@ -113,21 +125,21 @@ module.exports = {
           name: 'firstName',
           label: 'Their First Name after Marriage',
           type: 'string',
-          sideCheck: {
+          sideChecks: [{
             action: 'same',
             label: 'Same as before',
             target: 'their.firstName'
-          }
+          }]
         },
         {
           name: 'theirLastNameMarriage',
           label: 'Their Last Name after Marriage',
           type: 'string',
-          sideCheck: {
+          sideChecks: [{
             action: 'same',
             label: 'Same as before',
             target: 'their.lastName'
-          }
+          }]
         }
       ]
     },
@@ -158,38 +170,38 @@ module.exports = {
           name: 'date',
           label: 'Date of your Wedding',
           type: 'date',
-          sideCheck: {
+          sideChecks: [{
             action: 'dont-know',
             label: 'Don\'t Know Yet'
-          }
+          }]
         },
         {
           name: 'time',
           label: 'Time of your Wedding',
           type: 'time',
-          sideCheck: {
+          sideChecks: [{
             action: 'dont-know',
             label: 'Don\'t Know Yet'
-          }
+          }]
         },
         {
           name: 'name',
           label: 'Name of your Wedding Venue',
           type: 'string',
           disableCheck: 'There won\'t be a wedding venue',
-          sideCheck: {
+          sideChecks: [{
             action: 'dont-know',
             label: 'Don\'t Know Yet'
-          }
+          }]
         },
         {
           name: 'address',
           label: 'Address of your Wedding Venue',
           type: 'string',
-          sideCheck: {
+          sideChecks: [{
             action: 'dont-know',
             label: 'Don\'t Know Yet'
-          }
+          }]
         },
         {
           name: 'photo',
@@ -206,19 +218,26 @@ module.exports = {
           label: 'Name of your Reception Venue',
           type: 'string',
           disableCheck: 'There won\'t be a wedding venue',
-          sideCheck: {
-            action: 'dont-know',
-            label: 'Don\'t Know Yet'
-          }
+          sideChecks: [
+            {
+              action: 'none',
+              label: 'None'
+            },
+            {
+              action: 'same',
+              label: 'Same as Wedding Venue',
+              target: 'wedding.name'
+            },
+          ]
         },
         {
           name: 'address',
           label: 'Address of your Reception Venue',
           type: 'string',
-          sideCheck: {
+          sideChecks: [{
             action: 'dont-know',
             label: 'Don\'t Know Yet'
-          }
+          }]
         },
         {
           name: 'photo',
@@ -235,19 +254,19 @@ module.exports = {
           label: 'Location of your Honeymoon',
           type: 'string',
           disableCheck: 'There won\'t be a honeymoon',
-          sideCheck: {
+          sideChecks: [{
             action: 'dont-know',
             label: 'Don\'t Know Yet'
-          }
+          }]
         },
         {
           name: 'date',
           label: 'Date of your Honeymoon',
           type: 'daterange',
-          sideCheck: {
+          sideChecks: [{
             action: 'dont-know',
             label: 'Don\'t Know Yet'
-          }
+          }]
         },
         {
           name: 'photo',
@@ -265,10 +284,16 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'motherMiddleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'bride.motherMiddleName'
+        },
+        {
           name: 'motherMiddleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
+          type: 'string'
         },
         {
           name: 'motherlastName',
@@ -286,10 +311,16 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'fatherMiddleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'bride.fatherMiddleName'
+        },
+        {
           name: 'fatherMiddleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
+          type: 'string'
         },
         {
           name: 'fatherLastName',
@@ -310,13 +341,28 @@ module.exports = {
           name: 'familyPhoto',
           label: 'Add a photo of you, your fiancée, and them all togehter',
           type: 'image'
+        },
+        {
+          name: 'addAnotherMother',
+          label: 'Add another mother of the bride',
+          icon: 'add circle',
+          type: 'link',
+          action: 'show',
+          target: 'brideAnotherMother'
+        },
+        {
+          name: 'addAnotherFather',
+          label: 'Add another father of the bride',
+          icon: 'add circle',
+          type: 'link',
+          action: 'show',
+          target: 'brideAnotherFather'
         }
       ]
     },
     {
       name: 'brideAnotherMother',
       hidden: true,
-      link: 'Add another mother of the bride',
       fields: [
         {
           name: 'firstName',
@@ -324,10 +370,16 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'brideAnotherMother.middleName'
+        },
+        {
           name: 'middleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
+          type: 'string'
         },
         {
           name: 'lastName',
@@ -344,7 +396,6 @@ module.exports = {
     {
       name: 'brideAnotherFather',
       hidden: true,
-      link: 'Add another father of the bride',
       fields: [
         {
           name: 'firstName',
@@ -352,10 +403,16 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'brideAnotherFather.middleName'
+        },
+        {
           name: 'middleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
+          type: 'string'
         },
         {
           name: 'lastName',
@@ -378,10 +435,16 @@ module.exports = {
           type: 'string'
         },
         {
-          name: 'middleName',
+          name: 'motherMiddleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'groom.motherMiddleName'
+        },
+        {
+          name: 'motherMiddleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
+          type: 'string'
         },
         {
           name: 'motherLastName',
@@ -399,10 +462,16 @@ module.exports = {
           type: 'string'
         },
         {
-          name: 'middleName',
+          name: 'fatherMiddleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'groom.fatherMiddleName'
+        },
+        {
+          name: 'fatherMiddleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
+          type: 'string'
         },
         {
           name: 'fatherLastName',
@@ -423,12 +492,27 @@ module.exports = {
           name: 'familyPhoto',
           label: 'Add a photo of you, your fiancée, and them all togehter',
           type: 'image'
+        },
+        {
+          name: 'addAnotherMother',
+          label: 'Add another mother of the groom',
+          icon: 'add circle',
+          type: 'link',
+          action: 'show',
+          target: 'groomAnotherMother'
+        },
+        {
+          name: 'addAnotherFather',
+          label: 'Add another father of the groom',
+          icon: 'add circle',
+          type: 'link',
+          action: 'show',
+          target: 'groomAnotherFather'
         }
       ]
     },
     {
       name: 'groomAnotherMother',
-      link: 'Add another mother of the groom',
       hidden: true,
       fields: [
         {
@@ -441,6 +525,18 @@ module.exports = {
           label: false,
           type: 'string',
           enableCheck: 'Add Middle Name'
+        },
+        {
+          name: 'middleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'groomAnotherMother.middleName'
+        },
+        {
+          name: 'middleName',
+          hidden: true,
+          label: false,
+          type: 'string'
         },
         {
           name: 'lastName',
@@ -456,7 +552,6 @@ module.exports = {
     },
     {
       name: 'groomAnotherFather',
-      link: 'Add another father of the groom',
       hidden: true,
       fields: [
         {
@@ -465,10 +560,16 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'groomAnotherFather.middleName'
+        },
+        {
           name: 'middleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
+          type: 'string'
         },
         {
           name: 'lastName',
@@ -491,10 +592,16 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'maidOfHonor.middleName'
+        },
+        {
           name: 'middleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
+          type: 'string'
         },
         {
           name: 'lastName',
@@ -510,39 +617,13 @@ module.exports = {
           name: 'photoWithYou',
           label: 'Add a photo of two of you togehter',
           type: 'image'
-        }
-      ]
-    },
-    {
-      name: 'anotherMaidOfHonor',
-      link: 'Add another Maid of Honor',
-      hidden: true,
-      fields: [
-        {
-          name: 'firstName',
-          label: 'First Name of the Maid of Honor',
-          type: 'string'
         },
         {
-          name: 'middleName',
-          label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
-        },
-        {
-          name: 'lastName',
-          label: 'Last Name of the Maid of Honor',
-          type: 'string'
-        },
-        {
-          name: 'photo',
-          label: 'Add a photo of just them',
-          type: 'image'
-        },
-        {
-          name: 'photoWithYou',
-          label: 'Add a photo of two of you togehter',
-          type: 'image'
+          name: 'addAnother',
+          label: 'Add another Maid of Honor',
+          icon: 'add circle',
+          type: 'link',
+          action: 'replicate'
         }
       ]
     },
@@ -555,10 +636,16 @@ module.exports = {
           type: 'string'
         },
         {
+          name: 'middleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'bestMan.middleName'
+        },
+        {
           name: 'middleName',
+          hidden: true,
           label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
+          type: 'string'
         },
         {
           name: 'lastName',
@@ -574,107 +661,230 @@ module.exports = {
           name: 'photoWithYou',
           label: 'Add a photo of two of you togehter',
           type: 'image'
+        },
+        {
+          name: 'addAnother',
+          label: 'Add another Best Man',
+          icon: 'add circle',
+          type: 'link',
+          action: 'replicate'
         }
       ]
     },
     {
-      name: 'anotherBestMan',
-      link: 'Add another Best Man',
-      hidden: true,
-      fields: [
-        {
-          name: 'firstName',
-          label: 'First Name of the Best Man',
-          type: 'string'
-        },
-        {
-          name: 'middleName',
-          label: false,
-          type: 'string',
-          enableCheck: 'Add Middle Name'
-        },
-        {
-          name: 'lastName',
-          label: 'Last Name of the Best Man',
-          type: 'string'
-        },
-        {
-          name: 'photo',
-          label: 'Add a photo of just them',
-          type: 'image'
-        },
-        {
-          name: 'photoWithYou',
-          label: 'Add a photo of two of you togehter',
-          type: 'image'
-        }
-      ]
-    },
-    {
-      name: 'bridesmaid',
+      name: 'hasBridesmaid',
       fields: [
         {
           name: 'option',
           label: 'Will you have Bridesmaids?',
           type: 'boolean',
-          toggle: 'bridesmaid.howMany',
-        },
-        {
-          name: 'howMany',
-          hidden: true,
-          label: 'How many Bridesmaids will you have?',
-          type: 'number'
+          toggle: 'bridesmaid',
         }
       ]
     },
     {
-      name: 'groomsmen',
+      name: 'bridesmaid',
+      hidden: true,
+      fields: [
+        {
+          name: 'firstName',
+          label: 'First Name of the Bridesmaid',
+          type: 'string'
+        },
+        {
+          name: 'middleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'bridesmaid.middleName'
+        },
+        {
+          name: 'middleName',
+          hidden: true,
+          label: false,
+          type: 'string'
+        },
+        {
+          name: 'lastName',
+          label: 'Last Name of the Bridesmaid',
+          type: 'string'
+        },
+        {
+          name: 'photo',
+          label: 'Add a photo of just them',
+          type: 'image'
+        },
+        {
+          name: 'photoWithYou',
+          label: 'Add a photo of two of you togehter',
+          type: 'image'
+        },
+        {
+          name: 'addAnother',
+          label: 'Add another Bridesmaid',
+          icon: 'add circle',
+          type: 'link',
+          action: 'replicate'
+        }
+      ]
+    },
+    {
+      name: 'hasGroomsmen',
       fields: [
         {
           name: 'option',
           label: 'Will you have Groomsmen?',
           type: 'boolean',
-          toggle: 'bridesmaid.howMany',
-        },
-        {
-          name: 'howMany',
-          hidden: true,
-          label: 'How many Groomsmen will you have?',
-          type: 'number'
+          toggle: 'groomsmen',
         }
       ]
     },
     {
-      name: 'flowergirl',
+      name: 'groomsmen',
+      hidden: true,
+      fields: [
+        {
+          name: 'firstName',
+          label: 'First Name of the Groomsmen',
+          type: 'string'
+        },
+        {
+          name: 'middleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'groomsmen.middleName'
+        },
+        {
+          name: 'middleName',
+          hidden: true,
+          label: false,
+          type: 'string'
+        },
+        {
+          name: 'lastName',
+          label: 'Last Name of the Groomsmen',
+          type: 'string'
+        },
+        {
+          name: 'photo',
+          label: 'Add a photo of just them',
+          type: 'image'
+        },
+        {
+          name: 'photoWithYou',
+          label: 'Add a photo of two of you togehter',
+          type: 'image'
+        },
+        {
+          name: 'addAnother',
+          label: 'Add another Groomsmen',
+          icon: 'add circle',
+          type: 'link',
+          action: 'replicate'
+        }
+      ]
+    },
+    {
+      name: 'hasFlowergirl',
       fields: [
         {
           name: 'option',
           label: 'Will you have Flower Girl?',
           type: 'boolean',
-          toggle: 'flowergirl.howMany',
-        },
-        {
-          name: 'howMany',
-          hidden: true,
-          label: 'How many Flower Girls will you have?',
-          type: 'number'
+          toggle: 'flowergirl',
         }
       ]
     },
     {
-      name: 'ringbearer',
+      name: 'flowergirl',
+      hidden: true,
+      fields: [
+        {
+          name: 'firstName',
+          label: 'First Name of the Flower Girl',
+          type: 'string'
+        },
+        {
+          name: 'middleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'flowergirl.middleName'
+        },
+        {
+          name: 'middleName',
+          hidden: true,
+          label: false,
+          type: 'string'
+        },
+        {
+          name: 'lastName',
+          label: 'Last Name of the Flower Girl',
+          type: 'string'
+        },
+        {
+          name: 'photo',
+          label: 'Add a photo of just them',
+          type: 'image'
+        },
+        {
+          name: 'photoWithYou',
+          label: 'Add a photo of two of you togehter',
+          type: 'image'
+        }
+      ]
+    },
+    {
+      name: 'hasRingbearer',
       fields: [
         {
           name: 'option',
           label: 'Will you have Ring Bearer?',
           type: 'boolean',
-          toggle: 'bridesmaid.howMany',
+          toggle: 'ringbearer',
+        }
+      ]
+    },
+    {
+      name: 'ringbearer',
+      hidden: true,
+      fields: [
+        {
+          name: 'firstName',
+          label: 'First Name of the Ring Bearer',
+          type: 'string'
         },
         {
-          name: 'howMany',
+          name: 'middleNameToggle',
+          label: 'Add Middle Name',
+          type: 'toggle',
+          toggle: 'ringbearer.middleName'
+        },
+        {
+          name: 'middleName',
           hidden: true,
-          label: 'How many Ring Bearers will you have?',
-          type: 'number'
+          label: false,
+          type: 'string'
+        },
+        {
+          name: 'lastName',
+          label: 'Last Name of the Ring Bearer',
+          type: 'string'
+        },
+        {
+          name: 'photo',
+          label: 'Add a photo of just them',
+          type: 'image'
+        },
+        {
+          name: 'photoWithYou',
+          label: 'Add a photo of two of you togehter',
+          type: 'image'
+        },
+        {
+          name: 'addAnother',
+          label: 'Add another Ring Bearer',
+          icon: 'add circle',
+          type: 'link',
+          action: 'replicate'
         }
       ]
     },

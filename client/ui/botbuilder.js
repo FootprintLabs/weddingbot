@@ -58,30 +58,29 @@ module.exports = function() {
   function bindEvents() {
     $elem.find('.save-form, .cancel-form').click(hide);
 
-    $elem.find('.datepicker').each((i, elem) => {
+    bindFormEvents($body);
+    initProgress();
+  }
+
+  function bindFormEvents($form) {
+    $form.find('.datepicker').each((i, elem) => {
       new Pikaday({
-        field: elem,
-        format: 'MMMM Do YYYY',
-        container: $body.children('.ui.container')[0],
+        field:      elem,
+        format:     'MMMM Do YYYY',
+        container:  $body.children('.ui.container')[0],
         onOpen: function() {
-
-          var top = $body.scrollTop() + $(elem).offset().top -
-            ($body.outerHeight(true) - $body.height());
-
-          var left = $(elem).offset().left -
-            $body.children('.ui.container').offset().left;
-
           $(this.el).css({
             position: 'absolute',
-            top: top,
-            left: left
+            top:  $body.scrollTop() + $(elem).offset().top -
+                  ($body.outerHeight(true) - $body.height()),
+            left: $(elem).offset().left -
+                  $body.children('.ui.container').offset().left
           });
-
         }
       });
     });
 
-    $elem.find('.ui.checkbox').checkbox({
+    $form.find('.ui.checkbox').checkbox({
       onChecked: function() {
         checkAction(this, true);
       },
@@ -90,7 +89,7 @@ module.exports = function() {
       }
     });
 
-    $elem.find('.ui.dropdown.time').each((i, elem) => {
+    $form.find('.ui.dropdown.time').each((i, elem) => {
       _.each(_.range(1, 24), item => {
         let time = item - 12 < 1 ? item + ':00 AM' : (item - 12) + ':00 PM';
         const content = '<div class="item" data-value="' + time + '">' + time + '</div>';
@@ -99,26 +98,23 @@ module.exports = function() {
       });
     });
 
-    $elem.find('.ui.dropdown').dropdown();
+    $form.find('.ui.dropdown').dropdown();
 
-    $elem.find('input').focusin(e => highlightModule(e.currentTarget));
+    $form.find('input').focusin(e => highlightModule(e.currentTarget));
 
-    $elem.find('.wb-module-show-link').click(e => {
-      $(e.currentTarget)
-        .nextAll('.wb-field.hidden')
-        .removeClass('hidden');
+    $form.find('.wb-link').click(e => {
+      const data = $(e.currentTarget).data();
 
-      const $firstInput = $(e.currentTarget)
-        .next('.wb-field')
-        .find('input[type="text"]:eq(0)');
+      let $target;
+      if (data.action === 'show') {
+        $target = $body.find('.wb-module[data-module="' + data.target + '"]');
+        $target.removeClass('hidden');
+      }
 
-      _.delay(() => $firstInput.focus(), 100);
-
-      $(e.currentTarget).remove();
+      _.delay(() => $target.find('input[type="text"]:eq(0)').focus(), 100);
     });
 
-    initProgress();
-    uploadImage();
+    uploadImage($form);
   }
 
   function initProgress() {
@@ -163,7 +159,7 @@ module.exports = function() {
     });
   }
 
-  function uploadImage() {
+  function uploadImage($form) {
     let $currentField,
         lastPercent = 0;
 
@@ -177,11 +173,11 @@ module.exports = function() {
       }
     };
 
-    $elem.find('.upload-image').click(e => {
+    $form.find('.upload-image').click(e => {
       $(e.currentTarget).next('input[type="file"]').trigger('click');
     });
 
-    $elem.find('input[type="file"]').change(e => {
+    $form.find('input[type="file"]').change(e => {
       const formData = new FormData();
       formData.append('file', e.currentTarget.files[0]);
 
@@ -300,14 +296,20 @@ module.exports = function() {
         _.delay(() => $input.find('input').focus(), 100);
       }
     } else if (data.action === 'toggle') {
-      const val = _.toInteger($(elem).val()),
-            $field = $body.find('.wb-field[data-name="' + data.target + '"]');
+      const val = _.toInteger($(elem).val());
 
-      if (val) {
-        $field.removeClass('hidden');
-        _.delay(() => $field.find('input:eq(0)').focus(), 100);
+      let $target;
+      if (data.target.search(/\./g) > 0) {
+        $target = $body.find('.wb-field[data-name="' + data.target + '"]');
       } else {
-        $field.addClass('hidden');
+        $target = $body.find('.wb-module[data-module="' + data.target + '"]');
+      }
+
+      if (val && isChecked) {
+        $target.removeClass('hidden');
+        _.delay(() => $target.find('input:eq(0)').focus(), 100);
+      } else {
+        $target.addClass('hidden');
       }
     }
   }
