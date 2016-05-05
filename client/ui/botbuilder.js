@@ -109,6 +109,8 @@ module.exports = function() {
       if (data.action === 'show') {
         $target = $body.find('.wb-module[data-module="' + data.target + '"]');
         $target.removeClass('hidden');
+      } else if (data.action === 'replicate') {
+        $target = replicate($(e.currentTarget).parents('.wb-module'));
       }
 
       _.delay(() => $target.find('input[type="text"]:eq(0)').focus(), 100);
@@ -237,6 +239,16 @@ module.exports = function() {
         $body.scrollTop($form.position().top + $field.position().top);
       }, 200);
     }
+  }
+
+  function replicate($module) {
+    const name = $module.attr('data-module'),
+          $clone = $module.clone();
+
+    $clone.find('.wb-field[data-name="' + name + '.addAnother"]').remove();
+    $module.after($clone);
+
+    return $clone;
   }
 
   function checkAction(elem, isChecked) {

@@ -281,7 +281,12 @@ module.exports = {
         {
           name: 'motherFirstName',
           label: 'First Name of the Mother of the Bride',
-          type: 'string'
+          type: 'string',
+          sideChecks: [
+            { action: 'none', label: 'None' },
+            { action: 'none', label: 'Deceased' },
+            { action: 'none', label: 'Re-Name the Role' },
+          ]
         },
         {
           name: 'motherMiddleNameToggle',
@@ -308,7 +313,12 @@ module.exports = {
         {
           name: 'fatherFirstName',
           label: 'First Name of the Father of the Bride',
-          type: 'string'
+          type: 'string',
+          sideChecks: [
+            { action: 'none', label: 'None' },
+            { action: 'none', label: 'Deceased' },
+            { action: 'none', label: 'Re-Name the Role' },
+          ]
         },
         {
           name: 'fatherMiddleNameToggle',
@@ -432,7 +442,12 @@ module.exports = {
         {
           name: 'motherFirstName',
           label: 'First Name of the Mother of the Groom',
-          type: 'string'
+          type: 'string',
+          sideChecks: [
+            { action: 'none', label: 'None' },
+            { action: 'none', label: 'Deceased' },
+            { action: 'none', label: 'Re-Name the Role' },
+          ]
         },
         {
           name: 'motherMiddleNameToggle',
@@ -459,7 +474,12 @@ module.exports = {
         {
           name: 'fatherFirstName',
           label: 'First Name of the Father of the Groom',
-          type: 'string'
+          type: 'string',
+          sideChecks: [
+            { action: 'none', label: 'None' },
+            { action: 'none', label: 'Deceased' },
+            { action: 'none', label: 'Re-Name the Role' },
+          ]
         },
         {
           name: 'fatherMiddleNameToggle',
@@ -589,7 +609,12 @@ module.exports = {
         {
           name: 'firstName',
           label: 'First Name of the Maid of Honor',
-          type: 'string'
+          type: 'string',
+          sideChecks: [
+            { action: 'none', label: 'None' },
+            { action: 'none', label: 'Deceased' },
+            { action: 'none', label: 'Re-Name the Role' },
+          ]
         },
         {
           name: 'middleNameToggle',
@@ -633,7 +658,12 @@ module.exports = {
         {
           name: 'firstName',
           label: 'First Name of the Best Man',
-          type: 'string'
+          type: 'string',
+          sideChecks: [
+            { action: 'none', label: 'None' },
+            { action: 'none', label: 'Deceased' },
+            { action: 'none', label: 'Re-Name the Role' },
+          ]
         },
         {
           name: 'middleNameToggle',
@@ -679,6 +709,9 @@ module.exports = {
           label: 'Will you have Bridesmaids?',
           type: 'boolean',
           toggle: 'bridesmaid',
+          sideChecks: [
+            { action: 'none', label: 'Re-Name the Role' }
+          ]
         }
       ]
     },
@@ -735,6 +768,9 @@ module.exports = {
           label: 'Will you have Groomsmen?',
           type: 'boolean',
           toggle: 'groomsmen',
+          sideChecks: [
+            { action: 'none', label: 'Re-Name the Role' }
+          ]
         }
       ]
     },
@@ -791,6 +827,9 @@ module.exports = {
           label: 'Will you have Flower Girl?',
           type: 'boolean',
           toggle: 'flowergirl',
+          sideChecks: [
+            { action: 'none', label: 'Re-Name the Role' }
+          ]
         }
       ]
     },
@@ -829,6 +868,13 @@ module.exports = {
           name: 'photoWithYou',
           label: 'Add a photo of two of you togehter',
           type: 'image'
+        },
+        {
+          name: 'addAnother',
+          label: 'Add another Flower Girl',
+          icon: 'add circle',
+          type: 'link',
+          action: 'replicate'
         }
       ]
     },
@@ -840,6 +886,9 @@ module.exports = {
           label: 'Will you have Ring Bearer?',
           type: 'boolean',
           toggle: 'ringbearer',
+          sideChecks: [
+            { action: 'none', label: 'Re-Name the Role' }
+          ]
         }
       ]
     },
